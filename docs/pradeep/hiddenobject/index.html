@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, width = device-width"
+    name="viewport" />
+
+  <title>Hidden Object Game</title>
+
+  <link rel="stylesheet" type="text/css" href="media/jquery/animate.min.css" />
+  <link rel="stylesheet" type="text/css" href="media/style.css" />
+
+  <script>
+    document.addEventListener(
+      "touchmove",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
+    var lastTouchEnd = 0;
+
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        var now = new Date().getTime();
+        if (now - lastTouchEnd <= 50) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      },
+      { passive: false }
+    );
+  </script>
+</head>
+
+<body>
+  <!--Preloader-->
+  <div class="row">
+    <div id="html5Loader" class="col-sm-12">
+      <div id="DvLoaderCont">
+        <div id="DvLoaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="wrapper">
+    
+      <div id="load_images" style="width: 0px; height: 0px; opacity: 0">
+      <img src="media/assets/gamebg.png">
+    </div>
+
+    <div id="game_container"></div>
+    <!-- <div id="game_hud"></div> -->
+    <!-- <span id="IcZoomIn" onclick="GetZoomIn()" class="">Zoom In</span>
+  <span id="IcZoomOut" class="" onclick="GetZoomOut()">Zoom Out</span> -->
+
+    <div id="questionBox">
+      <div id="questionText"> </div>
+    </div>
+    <div id="hiddenShapesBox"></div>
+    <div id="levelProgressBarbg">
+      <div id="levelProgressBar">
+        <div id="prevNo"></div>
+        <div id="nextNo"></div>
+      </div>
+    </div>
+    <div id="teenabuttonmdpi"></div>
+    <div id="teenabuttonmdpi_slide">
+      <div id="homeblack"></div>
+      <div id="castblack"></div>
+    </div>
+    <div id="teenamdpi"></div>
+
+    <div id="endScreen">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_gu6wqgwo.json" background="transparent"
+        speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star3" src="https://assets7.lottiefiles.com/private_files/lf30_fmu9jm4p.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;"
+        loop autoplay></lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star2" src="https://assets6.lottiefiles.com/private_files/lf30_dej3rqca.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star1" src="https://assets10.lottiefiles.com/private_files/lf30_wqrsrqi9.json" background="transparent"
+        speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+      <div id="replayBtn"></div>
+      <div id="exitBtn"></div>
+
+    </div>
+
+  </div>
+
+  <audio id="bgm" src="media/audio/bgm.mp3" type="audio/mpeg"></audio>
+  <audio id="endscreenaudio" src="media/audio/correct_celebration.mp3" type="audio/mpeg"></audio>
+  <audio id="correctaudio" src="media/audio/correct_input.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction" src="media/audio/LetBeginInteraction.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption" src="media/audio/tryagainoption.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption2" src="media/audio/tryagainoption2.mp3" type="audio/mpeg"></audio>
+  
+
+  <script type="text/javascript" src="media/jquery/jquery.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery.ui.touch-punch.js"></script>
+
+  <!-- Loader Libraries Starts -->
+  <script type="text/javascript" src="media/preloader/jquery.html5Loader.min.js"></script>
+  <script type="text/javascript" src="media/preloader/animation/jquery.big-counter.js"></script>
+  <script type="text/javascript" src="media/preloader/Main.class.js"></script>
+  <script type="text/javascript" src="media/preloader/configPreload.js"></script>
+  <!--Loader Libraries Ends -->
+
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+
+  <script type="text/javascript" src="media/jquery/panzoom.min.js"></script>
+  <script type="text/javascript" src="media/zoomController.js"></script>
+
+  <script type="text/javascript" src="media/data/data.js"></script>
+  <script type="text/javascript" src="media/custom.js"></script>
+</body>
+
+</html>

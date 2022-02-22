@@ -3190,6 +3190,19 @@ e=>this._OnJobWorkerMessage(e)}catch(err){this._hadErrorCreatingWorker=true;this
 
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["lens2"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nuniform mediump vec2 srcStart;\nuniform mediump vec2 srcEnd;\nuniform mediump vec2 srcOriginStart;\nuniform mediump vec2 srcOriginEnd;\nuniform lowp sampler2D samplerBack;\nuniform mediump vec2 destStart;\nuniform mediump vec2 destEnd;\nuniform mediump float magnification;\nvoid main(void)\n{\nlowp vec4 front = texture2D(samplerFront, vTex);\nmediump vec2 tex = (vTex - srcStart) / (srcEnd - srcStart);\nmediump float zoomFactor = (0.5 - (front.r * 0.299 + front.g * 0.587 + front.b * 0.114)) * front.a * magnification;\nmediump vec2 center = (srcOriginStart + srcOriginEnd) / 2.0;\nmediump vec2 p = tex;\np += (tex - center) * zoomFactor;\ngl_FragColor = texture2D(samplerBack, mix(destStart, destEnd, p));\n}",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\n%%SAMPLERBACK_BINDING%% var samplerBack : sampler;\n%%TEXTUREBACK_BINDING%% var textureBack : texture_2d<f32>;\n[[block]] struct ShaderParams {\nmagnification : f32;\n};\n%%SHADERPARAMS_BINDING%% var<uniform> shaderParams : ShaderParams;\n%%C3PARAMS_STRUCT%%\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n[[stage(fragment)]]\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar front : vec4<f32> = textureSample(textureFront, samplerFront, input.fragUV);\nvar tex : vec2<f32> = c3_srcToNorm(input.fragUV);\nvar zoomFactor : f32 = (0.5 - c3_grayscale(front.rgb)) * front.a * shaderParams.magnification;\nvar center : vec2<f32> = (c3Params.srcOriginStart + c3Params.srcOriginEnd) / 2.0;\nvar p : vec2<f32> = tex + (tex - center) * zoomFactor;\nvar output : FragmentOutput;\noutput.color = textureSample(textureBack, samplerBack, mix(c3Params.destStart, c3Params.destEnd, p));\nreturn output;\n}",
+	blendsBackground: true,
+	usesDepth: false,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 0,
+	crossSampling: true,
+	mustPreDraw: true,
+	preservesOpaqueness: false,
+	animated: false,
+	parameters: [["magnification",0,"percent"]]
+};
 
 }
 
@@ -3947,11 +3960,17 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio,
 		C3.Behaviors.Rotate,
 		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Sprite.Acts.SetSize,
+		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Acts.SetOpacity,
+		C3.Behaviors.Tween.Acts.TweenOneProperty,
+		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Behaviors.DragnDrop.Acts.SetEnabled,
+		C3.Plugins.Audio.Acts.Stop,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.System.Exps.layoutname,
-		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Audio.Cnds.OnEnded,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
@@ -3959,7 +3978,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio.Cnds.IsTagPlaying,
 		C3.Plugins.Audio.Acts.PlayByName,
 		C3.Plugins.Sprite.Acts.SetScale,
-		C3.Plugins.System.Acts.Wait,
 		C3.Behaviors.DragnDrop.Cnds.OnDragStart,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.Sprite.Exps.X,
@@ -3970,7 +3988,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Cnds.PickAll,
-		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
@@ -3980,9 +3997,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Fade.Acts.StartFade,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.System.Cnds.PickByComparison,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
-		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Plugins.System.Acts.ResetGlobals
 	];
@@ -4044,6 +4059,9 @@ self.C3_JsPropNameTable = [
 	{Asset6mdpi: 0},
 	{star1mdpi2: 0},
 	{star1mdpi3: 0},
+	{Feegomdpi: 0},
+	{Castle2: 0},
+	{fade: 0},
 	{LvlNames: 0},
 	{Animals: 0},
 	{Lock: 0},
@@ -4151,7 +4169,16 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => 1280,
+		() => 720,
+		() => 640,
+		() => 360,
+		() => 100,
+		() => "",
 		() => 0,
+		() => 0.5,
+		() => "main",
+		() => -15,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -4180,13 +4207,20 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpInstVar_Family();
 		},
 		() => 0.2,
-		() => "",
-		() => 5,
+		() => 4.5,
 		() => 3.5,
 		() => 2,
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (-n0.ExpObject());
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => ((((n0.ExpObject()) > (1280) ? 1 : 0)) ? (1280) : (((((n1.ExpObject()) < (0) ? 1 : 0)) ? (0) : (n2.ExpObject()))));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => ((((n0.ExpObject()) > (720) ? 1 : 0)) ? (720) : (((((n1.ExpObject()) < (0) ? 1 : 0)) ? (0) : (n2.ExpObject()))));
 		},
 		() => "CenterOfElement",
 		() => "dog",

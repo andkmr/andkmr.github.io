@@ -3033,8 +3033,8 @@ this._gpuTimeStartFrame=this._gpuTimeEndFrame;this._gpuTimeEndFrame=0}_AddWebGPU
 resolve});return this._snapshotPromise}_MaybeTakeSnapshot(){if(!this._snapshotFormat)return;let canvas=this._canvas;const snapArea=this._snapshotArea;const x=C3.clamp(Math.floor(snapArea.getLeft()),0,canvas.width);const y=C3.clamp(Math.floor(snapArea.getTop()),0,canvas.height);let w=snapArea.width();if(w===0)w=canvas.width-x;else w=C3.clamp(Math.floor(w),0,canvas.width-x);let h=snapArea.height();if(h===0)h=canvas.height-y;else h=C3.clamp(Math.floor(h),0,canvas.height-y);if((x!==0||y!==0||w!==canvas.width||
 h!==canvas.height)&&(w>0&&h>0)){canvas=C3.CreateCanvas(w,h);const ctx=canvas.getContext("2d");ctx.drawImage(this._canvas,x,y,w,h,0,0,w,h)}C3.CanvasToBlob(canvas,this._snapshotFormat,this._snapshotQuality).then(blob=>{this._snapshotUrl=URL.createObjectURL(blob);this._snapshotPromise=null;this._snapshotResolve(this._snapshotUrl)});this._snapshotFormat="";this._snapshotQuality=1}GetCanvasSnapshotUrl(){return this._snapshotUrl}SetIsPastingToDrawingCanvas(p){if(p)this._isPastingToDrawingCanvas++;else this._isPastingToDrawingCanvas--}IsPastingToDrawingCanvas(){return this._isPastingToDrawingCanvas>
 0}InitLoadingScreen(loaderStyle){if(!this._webglRenderer)return;if(loaderStyle===2){this._percentText=C3.New(C3.Gfx.RendererText,this.GetRenderer());this._percentText.SetIsAsync(false);this._percentText.SetFontName("Arial");this._percentText.SetFontSize(16);this._percentText.SetHorizontalAlignment("center");this._percentText.SetVerticalAlignment("center");this._percentText.SetSize(PERCENTTEXT_WIDTH,PERCENTTEXT_HEIGHT)}else if(loaderStyle===0){const loadingLogoAsset=this._runtime.GetLoadingLogoAsset();
-if(loadingLogoAsset)loadingLogoAsset.LoadStaticTexture(this._webglRenderer).catch(err=>console.warn(`[C3 runtime] Failed to create texture for loading logo: `,err))}else if(loaderStyle===4){this._LoadSvgSplashImage("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIxNzAwLjc5MDA0cHgiIGhlaWdodD0iMTcwMC43OTAwNHB4IiB2aWV3Qm94PSIyODcgMzE3IDExMjUgMTEyNSINCgkgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTcwMC43OTAwNCAxNzAwLjc5MDA0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnIGlkPSJsb2dvIj4NCgk8Zz4NCgkJPGc+DQoJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTM1NC45Nzc1NCwxMTk1LjYyMzA1DQoJCQkJYzExLjM4NDc3LDAsMjIuMDEyNywzLjIzNzMsMzEuMDE3NTgsOC44Mzc4OWMxLjk0NjI5LDEuMjEwOTQsMi41ODQ5NiwzLjc0OTAyLDEuNDM4NDgsNS43MzQzOGwtNC45MzI2Miw4LjU0MTk5DQoJCQkJYy0zLjI3ODMyLDUuNjc5NjktMTAuMDMzMiw4LjM3Njk1LTE2LjMxNzM4LDYuNTAwOThjLTIuNzY0NjUtMC44MjUyLTUuNjkzMzYtMS4yNjg1NS04LjcyNjU2LTEuMjY4NTUNCgkJCQljLTE2LjgyOTEsMC0zMC40NzI2NiwxMy42NDM1NS0zMC40NzI2NiwzMC40NzI2NmMwLDE2LjgyODEzLDEzLjY0MzU1LDMwLjQ3MjY2LDMwLjQ3MjY2LDMwLjQ3MjY2DQoJCQkJYzMuMDMzMiwwLDUuOTYxOTEtMC40NDMzNiw4LjcyNjU2LTEuMjY4NTVjNi4yOTQ5Mi0xLjg3OTg4LDEzLjAzMzIsMC44MTE1MiwxNi4zMTczOCw2LjUwMDk4bDQuOTMxNjQsOC41NDE5OQ0KCQkJCWMxLjE0NzQ2LDEuOTg4MjgsMC41MTA3NCw0LjUyMzQ0LTEuNDM4NDgsNS43MzQzOGMtOS4wMDM5MSw1LjYwMTU2LTE5LjYzMTg0LDguODM3ODktMzEuMDE2Niw4LjgzNzg5DQoJCQkJYy0zMi40ODUzNSwwLTU4LjgxOTM0LTI2LjMzNDk2LTU4LjgxOTM0LTU4LjgxOTM0QzI5Ni4xNTgyLDEyMjEuOTU3MDMsMzIyLjQ5MjE5LDExOTUuNjIzMDUsMzU0Ljk3NzU0LDExOTUuNjIzMDUNCgkJCQlMMzU0Ljk3NzU0LDExOTUuNjIzMDV6IE03MDMuMjE0ODQsMTI1OS4xNzU3OGMtMTQuNTU5NTctOS44MTczOC0yMC4yMDMxMy0yMC4wMzIyMy0yMC4yMDMxMy0zMy4wODAwOA0KCQkJCWMwLTE4LjQ4OTI2LDE1LjcxNDg0LTI5Ljc2MzY3LDM4LjI2NjYtMjkuNzYzNjdjOS42NTcyMywwLDE4LjcyMTY4LDIuNTQyOTcsMjYuNTU5NTcsNi45OTQxNA0KCQkJCWMyLjA0OTgsMS4xNjQwNiwyLjc2MTcyLDMuNzgzMiwxLjU4MzAxLDUuODI0MjJsLTMuNDE3OTcsNS45MTk5MmMtMy4yNDcwNyw1LjYyNDAyLTkuOTA4Miw4LjMzMTA1LTE2LjE1MzMyLDYuNTQ4ODMNCgkJCQljLTIuNzIzNjMtMC43NzYzNy01LjU5ODYzLTEuMTkyMzgtOC41NzEyOS0xLjE5MjM4Yy0xMC40OTAyMywwLTExLjU5ODYzLDkuNTc2MTctNC44NTc0MiwxNC4xMjMwNWwyMy42ODY1MiwxNS45NzY1Ng0KCQkJCWM5Ljk5MDIzLDYuNzM4MjgsMTUuODk1NTEsMTcuMDY2NDEsMTUuODk1NTEsMjguNzE4NzVjMCwxOC43ODYxMy0xNS4wMDY4NCwzMy4zMDc2Mi0zOC4yNjc1OCwzMy4zMDc2Mg0KCQkJCWMtOS41MjI0NiwwLTE4LjU4Nzg5LTEuOTU3MDMtMjYuODE1NDMtNS40OTAyM2MtNy43ODEyNS0zLjMzOTg0LTEwLjkzMzU5LTEyLjc4MjIzLTYuNjk3MjctMjAuMTE4MTZsMy40ODczLTYuMDQxOTkNCgkJCQljMS4yMTM4Ny0yLjA5OTYxLDMuOTMxNjQtMi43NTk3Nyw1Ljk3NDYxLTEuNDU2MDVjNi44NTkzOCw0LjM4MjgxLDE2LjQ5MDIzLDcuNTk0NzMsMjQuNzU4NzksNy41OTQ3Mw0KCQkJCWMxMC41NDU5LDAsMTEuMzI4MTMtOS45NTg5OCwzLjc2NzU4LTE1LjA1NzYyTDcwMy4yMTQ4NCwxMjU5LjE3NTc4TDcwMy4yMTQ4NCwxMjU5LjE3NTc4eiBNOTg0LjYzMDg2LDEyMDIuMDAwOTgNCgkJCQljMC0yLjM0NzY2LDEuOTAzMzItNC4yNTE5NSw0LjI1MTk1LTQuMjUxOTVoOS45MjE4OGM3LjgyNzE1LDAsMTQuMTcyODUsNi4zNDU3LDE0LjE3Mjg1LDE0LjE3MzgzdjU3LjQwMTM3DQoJCQkJYzAsOC42MTAzNSw2Ljk4MDQ3LDE1LjU5MDgyLDE1LjU5MDgyLDE1LjU5MDgyczE1LjU5MDgyLTYuOTgwNDcsMTUuNTkwODItMTUuNTkwODJ2LTU3LjQwMTM3DQoJCQkJYzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTcyODUtMTQuMTczODNoOS45MjA5YzIuMzQ4NjMsMCw0LjI1MTk1LDEuOTA0Myw0LjI1MTk1LDQuMjUxOTV2NjcuMzIzMjQNCgkJCQljMCwyNC4yNjU2My0xOS42NzA5LDQzLjkzNzUtNDMuOTM2NTIsNDMuOTM3NXMtNDMuOTM3NS0xOS42NzE4OC00My45Mzc1LTQzLjkzNzVWMTIwMi4wMDA5OEw5ODQuNjMwODYsMTIwMi4wMDA5OHoNCgkJCQkgTTQ2Ni44NjkxNCwxMTk1LjYyMzA1YzMyLjQ4NDM4LDAsNTguODE4MzYsMjYuMzMzOTgsNTguODE4MzYsNTguODE5MzRjMCwzMi40ODQzOC0yNi4zMzM5OCw1OC44MTkzNC01OC44MTgzNiw1OC44MTkzNA0KCQkJCWMtMzIuNDg2MzMsMC01OC44MTkzNC0yNi4zMzQ5Ni01OC44MTkzNC01OC44MTkzNEM0MDguMDQ5OCwxMjIxLjk1NzAzLDQzNC4zODI4MSwxMTk1LjYyMzA1LDQ2Ni44NjkxNCwxMTk1LjYyMzA1DQoJCQkJTDQ2Ni44NjkxNCwxMTk1LjYyMzA1eiBNNDY2Ljg2OTE0LDEyMjUuMDMzMmMtMTYuMjQzMTYsMC0yOS40MTAxNiwxMy4xNjY5OS0yOS40MTAxNiwyOS40MDkxOA0KCQkJCXMxMy4xNjY5OSwyOS40MDgyLDI5LjQxMDE2LDI5LjQwODJjMTYuMjQxMjEsMCwyOS40MDgyLTEzLjE2NjAyLDI5LjQwODItMjkuNDA4MlM0ODMuMTEwMzUsMTIyNS4wMzMyLDQ2Ni44NjkxNCwxMjI1LjAzMzINCgkJCQlMNDY2Ljg2OTE0LDEyMjUuMDMzMnogTTU1Ni43MzI0MiwxMzExLjEzNDc3Yy0yLjM0NzY2LDAtNC4yNTE5NS0xLjkwMjM0LTQuMjUxOTUtNC4yNXYtOTQuOTYxOTENCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzM4My0xNC4xNzM4M2gzLjk1ODk4YzQuNjI1LDAsOC45NTg5OCwyLjI1Njg0LDExLjYxMTMzLDYuMDQ1OWw0MS4xMjIwNyw1OC43NDcwN3YtNTAuNjE5MTQNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2g5LjkyMTg4YzIuMzQ3NjYsMCw0LjI1MTk1LDEuOTA0Myw0LjI1MTk1LDQuMjUxOTV2OTQuOTYwOTQNCgkJCQljMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3MzgzLDE0LjE3Mjg1aC0zLjk1ODk4Yy00LjYyNSwwLTguOTU4OTgtMi4yNTU4Ni0xMS42MTEzMy02LjA0NDkybC00MS4xMjIwNy01OC43NDYwOXY1MC42MTgxNg0KCQkJCWMwLDcuODI5MS02LjM0NTcsMTQuMTcyODUtMTQuMTcyODUsMTQuMTcyODVINTU2LjczMjQyTDU1Ni43MzI0MiwxMzExLjEzNDc3eiBNMTIxNS4wMjA1MSwxMjExLjkyMjg1DQoJCQkJYzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTcyODUtMTQuMTczODNoNTAuMzE1NDNjMi4zNDg2MywwLDQuMjUxOTUsMS45MDQzLDQuMjUxOTUsNC4yNTE5NXY1LjY2OTkyDQoJCQkJYzAsNy44MjcxNS02LjM0NTcsMTQuMTcyODUtMTQuMTcyODUsMTQuMTcyODVoLTYuMDI0NDF2NzUuMTE4MTZjMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3Mjg1LDE0LjE3Mjg1aC05LjkyMTg4DQoJCQkJYy0yLjM0ODYzLDAtNC4yNTE5NS0xLjkwMjM0LTQuMjUxOTUtNC4yNXYtODUuMDQxMDJoLTE1Ljk0NDM0Yy0yLjM0ODYzLDAtNC4yNTE5NS0xLjkwMzMyLTQuMjUxOTUtNC4yNTE5NVYxMjExLjkyMjg1DQoJCQkJTDEyMTUuMDIwNTEsMTIxMS45MjI4NXogTTc3Ni40NDkyMiwxMjExLjkyMjg1YzAtNy44MjgxMyw2LjM0NTctMTQuMTczODMsMTQuMTczODMtMTQuMTczODNoNTAuMzE0NDUNCgkJCQljMi4zNDk2MSwwLDQuMjUxOTUsMS45MDQzLDQuMjUxOTUsNC4yNTE5NXY1LjY2OTkyYzAsNy44MjcxNS02LjM0NTcsMTQuMTcyODUtMTQuMTcxODgsMTQuMTcyODVoLTYuMDI1Mzl2NzUuMTE4MTYNCgkJCQljMCw3LjgyOTEtNi4zNDU3LDE0LjE3Mjg1LTE0LjE3Mjg1LDE0LjE3Mjg1aC05LjkyMDljLTIuMzQ5NjEsMC00LjI1MTk1LTEuOTAyMzQtNC4yNTE5NS00LjI1di04NS4wNDEwMmgtMTUuOTQ1MzENCgkJCQljLTIuMzQ3NjYsMC00LjI1MTk1LTEuOTAzMzItNC4yNTE5NS00LjI1MTk1VjEyMTEuOTIyODVMNzc2LjQ0OTIyLDEyMTEuOTIyODV6IE05MjkuNjA0NDksMTI3Mi4wMjI0NmwyNi45NTgwMSwzMi4xMjc5Mw0KCQkJCWMyLjMxNDQ1LDIuNzU3ODEsMC4zNDM3NSw2Ljk4NDM4LTMuMjU2ODQsNi45ODQzOGgtMTkuNzA1MDhjLTQuMTg5NDUsMC04LjE2NTA0LTEuODUxNTYtMTAuODU3NDItNS4wNjA1NWwtMjIuNjgxNjQtMjcuMDMxMjUNCgkJCQl2MjcuODQxOGMwLDIuMzQ3NjYtMS45MDMzMiw0LjI1LTQuMjUxOTUsNC4yNWgtOS45MjA5Yy03LjgyNzE1LDAtMTQuMTcyODUtNi4zNDM3NS0xNC4xNzI4NS0xNC4xNzI4NXYtODUuMDM5MDYNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2gyOS43NjM2N2MyMi43MDAyLDAsNDEuMTAyNTQsMTcuMTMzNzksNDEuMTAyNTQsMzguMjY4NTUNCgkJCQlDOTU2Ljc1NDg4LDEyNTIuNTkwODIsOTQ1LjQzNjUyLDEyNjYuNzAyMTUsOTI5LjYwNDQ5LDEyNzIuMDIyNDZMOTI5LjYwNDQ5LDEyNzIuMDIyNDZ6IE05MDAuMDYxNTIsMTIyMS44NDM3NXYzMi41OTg2M2g4LjUwMzkxDQoJCQkJYzEwLjk1ODk4LDAsMTkuODQyNzctNy4yOTc4NSwxOS44NDI3Ny0xNi4yOTg4M2MwLTkuMDAxOTUtOC44ODM3OS0xNi4yOTk4LTE5Ljg0Mjc3LTE2LjI5OThIOTAwLjA2MTUyTDkwMC4wNjE1MiwxMjIxLjg0Mzc1eg0KCQkJCSBNMTE1OC4zNTkzOCwxMTk1LjYyMzA1YzExLjM4NDc3LDAsMjIuMDEyNywzLjIzNzMsMzEuMDE3NTgsOC44Mzc4OWMxLjk0NzI3LDEuMjEwOTQsMi41ODQ5NiwzLjc0OTAyLDEuNDM4NDgsNS43MzQzOA0KCQkJCWwtNC45MzI2Miw4LjU0MTk5Yy0zLjI3ODMyLDUuNjc5NjktMTAuMDMzMiw4LjM3Njk1LTE2LjMxNzM4LDYuNTAwOThjLTIuNzY0NjUtMC44MjUyLTUuNjkzMzYtMS4yNjg1NS04LjcyNTU5LTEuMjY4NTUNCgkJCQljLTE2LjgyOTEsMC0zMC40NzI2NiwxMy42NDM1NS0zMC40NzI2NiwzMC40NzI2NmMwLDE2LjgyODEzLDEzLjY0MzU1LDMwLjQ3MjY2LDMwLjQ3MjY2LDMwLjQ3MjY2DQoJCQkJYzMuMDMyMjMsMCw1Ljk2MDk0LTAuNDQzMzYsOC43MjU1OS0xLjI2ODU1YzYuMjk1OS0xLjg3OTg4LDEzLjAzMzIsMC44MTE1MiwxNi4zMTgzNiw2LjUwMDk4bDQuOTMwNjYsOC41NDE5OQ0KCQkJCWMxLjE0NzQ2LDEuOTg4MjgsMC41MTA3NCw0LjUyMzQ0LTEuNDM3NSw1LjczNDM4Yy05LjAwNDg4LDUuNjAxNTYtMTkuNjMyODEsOC44Mzc4OS0zMS4wMTc1OCw4LjgzNzg5DQoJCQkJYy0zMi40ODUzNSwwLTU4LjgxOTM0LTI2LjMzNDk2LTU4LjgxOTM0LTU4LjgxOTM0QzEwOTkuNTQwMDQsMTIyMS45NTcwMywxMTI1Ljg3NDAyLDExOTUuNjIzMDUsMTE1OC4zNTkzOCwxMTk1LjYyMzA1eiIvPg0KCQkJPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMwMEZGREEiIGQ9Ik0xMzE4LjE5NzI3LDEyMDYuMDMyMjMNCgkJCQljMC03LjgyODEzLDYuMzQ1Ny0xNC4xNzM4MywxNC4xNzI4NS0xNC4xNzM4M2MyMC42NTYyNSwwLDQxLjMxMjUsMCw2MS45Njg3NSwwYzMuNDI5NjksMCw1LjQ1MDIsMy44ODA4NiwzLjQ4MzQsNi42OTA0Mw0KCQkJCWwtMTkuMjk2ODgsMjcuNTY3MzhjMTUuNTQyOTcsOC4zNzU5OCwyNi4xMDY0NSwyNC44MDA3OCwyNi4xMDY0NSw0My42OTUzMWMwLDI3LjM5NzQ2LTIyLjIwODk4LDQ5LjYwNjQ1LTQ5LjYwNjQ1LDQ5LjYwNjQ1DQoJCQkJYy0xNi42ODg0OCwwLTMxLjQ1MTE3LTguMjQwMjMtNDAuNDQzMzYtMjAuODc1OThjLTEuNDUwMi0yLjAzOTA2LTAuODMxMDUtNC44OTk0MSwxLjMzNTk0LTYuMTUyMzRsMTAuOTc3NTQtNi4zMzc4OQ0KCQkJCWM0Ljg4MTg0LTIuODE4MzYsMTAuOTc5NDktMi40NzU1OSwxNS41MTQ2NSwwLjg3MzA1YzMuNTI4MzIsMi42MDU0Nyw3Ljg5MTYsNC4xNDY0OCwxMi42MTUyMyw0LjE0NjQ4DQoJCQkJYzExLjc0MjE5LDAsMjEuMjU5NzctOS41MTg1NSwyMS4yNTk3Ny0yMS4yNTk3N3MtOS41MTc1OC0yMS4yNTk3Ny0yMS4yNTk3Ny0yMS4yNTk3N2gtMTUuMjE3NzcNCgkJCQljLTMuNDI5NjksMC01LjQ1MDItMy44ODA4Ni0zLjQ4NDM4LTYuNjkwNDNsMTguMTM1NzQtMjUuOTA4MmgtMzIuMDA5NzdjLTIuMzQ4NjMsMC00LjI1MTk1LTEuOTAzMzItNC4yNTE5NS00LjI1MTk1VjEyMDYuMDMyMjN6DQoJCQkJIi8+DQoJCTwvZz4NCgkJPGc+DQoJCQk8Zz4NCgkJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0RBRThGNyIgZD0iTTg1MC4zOTU1MSw4NTcuNTkxOA0KCQkJCQljLTUwLjM1NjQ1LDAtOTQuMzI1Mi0yNy4zNTY0NS0xMTcuODUyNTQtNjguMDIwNTFsLTgwLjAzMDI3LDQ2LjIwNDFjLTQuNjU1MjcsMi42ODk0NS02LjEzMTg0LDguNzE4NzUtMy4yNDkwMiwxMy4yNTU4Ng0KCQkJCQljNDIuMjM3Myw2Ni40ODYzMywxMTYuNTMzMiwxMTAuNjA3NDIsMjAxLjEzMTg0LDExMC42MDc0MmM4OC4xMjU5OCwwLDE2NS4wNzEyOS00Ny44NzUsMjA2LjI0MzE2LTExOS4wMzYxM2wtODAuNDg3My00Ni40Njk3Mw0KCQkJCQljLTQuMzEzNDgtMi40OTAyMy05LjgwMTc2LTEuMjA1MDgtMTIuNTcwMzEsMi45MzU1NUM5MzkuMTc1NzgsODMzLjU2MjUsODk3LjU5MTgsODU3LjU5MTgsODUwLjM5NTUxLDg1Ny41OTE4DQoJCQkJCUw4NTAuMzk1NTEsODU3LjU5MTh6IE0xMTM2LjcyMTY4LDU1Ni4yMTc3N2M0LjYxNDI2LTIuNjYzMDksNi4xMTAzNS04LjYxOTE0LDMuMzEyNS0xMy4xNTEzNw0KCQkJCQljLTU5LjkxNTA0LTk3LjAzMDI3LTE2Ny4yMjQ2MS0xNjEuNjk0MzQtMjg5LjYzODY3LTE2MS42OTQzNGMtMTI1Ljg5MzU1LDAtMjM1LjgxMzQ4LDY4LjM5MjU4LTI5NC42MzM3OSwxNzAuMDQ5OA0KCQkJCQlsODAuMzc2OTUsNDYuNDA2MjVjNC4zOTc0NiwyLjUzOTA2LDEwLjAwMTk1LDEuMTQ5NDEsMTIuNzEwOTQtMy4xNDU1MQ0KCQkJCQljNDIuMTY0MDYtNjYuODUxNTYsMTE2LjY2ODk1LTExMS4yNjM2NywyMDEuNTQ1OS0xMTEuMjYzNjdjODguMTI1OTgsMCwxNjUuMDcxMjksNDcuODc1OTgsMjA2LjI0MzE2LDExOS4wMzYxMw0KCQkJCQlMMTEzNi43MjE2OCw1NTYuMjE3Nzd6Ii8+DQoJCQkJPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNBNUJBQzgiIGQ9Ik04NTAuMzk1NTEsOTU5LjYzODY3DQoJCQkJCWMtODQuNTk4NjMsMC0xNTguODk0NTMtNDQuMTIxMDktMjAxLjEzMTg0LTExMC42MDc0MmMtMi44NzY5NS00LjUzMDI3LTEuMzk5NDEtMTAuNTcwMzEsMy4yNDkwMi0xMy4yNTU4Nmw4MC4wMzAyNy00Ni4yMDQxDQoJCQkJCWMtMTEuNTgxMDUtMjAuMDE2Ni0xOC4yMDk5Ni00My4yNTQ4OC0xOC4yMDk5Ni02OC4wNDE5OWMwLTc0Ljc4NTE2LDYwLjU1NzYyLTEzNi4wNjI1LDEzNi4wNjI1LTEzNi4wNjI1DQoJCQkJCWM0Ny4xOTYyOSwwLDg4Ljc4MDI3LDI0LjAyOTMsMTEzLjE4NTU1LDYwLjUyMjQ2YzIuNzY0NjUsNC4xMzM3OSw4LjI2MzY3LDUuNDIxODgsMTIuNTcwMzEsMi45MzU1NWw4MC40ODczLTQ2LjQ2OTczDQoJCQkJCWMtNDEuMTcxODgtNzEuMTYwMTYtMTE4LjExNzE5LTExOS4wMzYxMy0yMDYuMjQzMTYtMTE5LjAzNjEzYy04NC44NzY5NSwwLTE1OS4zODE4NCw0NC40MTIxMS0yMDEuNTQ1OSwxMTEuMjYzNjcNCgkJCQkJYy0yLjcwNjA1LDQuMjkxMDItOC4zMTgzNiw1LjY4MTY0LTEyLjcxMDk0LDMuMTQ1NTFsLTgwLjM3Njk1LTQ2LjQwNjI1DQoJCQkJCWMtMjguOTUyMTUsNTAuMDQwMDQtNDUuNTIzNDQsMTA4LjEzOTY1LTQ1LjUyMzQ0LDE3MC4xMDc0MmMwLDE4Ni45NjM4NywxNTEuMzk0NTMsMzQwLjE1NzIzLDM0MC4xNTcyMywzNDAuMTU3MjMNCgkJCQkJYzEyMi40MTQwNiwwLDIyOS43MjM2My02NC42NjQwNiwyODkuNjM4NjctMTYxLjY5NTMxYzIuNzk0OTItNC41MjYzNywxLjI5NDkyLTEwLjQ5MDIzLTMuMzEyNS0xMy4xNTEzN2wtODAuMDgzMDEtNDYuMjM3Mw0KCQkJCQlDMTAxNS40NjY4LDkxMS43NjM2Nyw5MzguNTIxNDgsOTU5LjYzODY3LDg1MC4zOTU1MSw5NTkuNjM4Njd6Ii8+DQoJCQk8L2c+DQoJCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzAwRkZEQSIgZD0iTTExMzcuMTg1NTUsNzU4LjExMzI4di03My4xNjc5N2wtNjMuMzY1MjMsMzYuNTgzOTgNCgkJCQlMMTEzNy4xODU1NSw3NTguMTEzMjhMMTEzNy4xODU1NSw3NTguMTEzMjh6IE0xMDI2LjU3NjE3LDcwNS4xNjQwNmwxMjAuMDU4NTktNjkuMzE2NDENCgkJCQljMTIuNTY4MzYtNy4yNTU4NiwyOC4zNDQ3MywxLjg1MjU0LDI4LjM0NTcsMTYuMzY2MjF2MTM4LjYzMDg2Yy0wLjAwMDk4LDE0LjUxMjctMTUuNzc3MzQsMjMuNjIyMDctMjguMzQ1NywxNi4zNjYyMQ0KCQkJCWwtMTIwLjA1ODU5LTY5LjMxNjQxQzEwMTQuMDI4MzIsNzMwLjY0OTQxLDEwMTQuMDI4MzIsNzEyLjQwOTE4LDEwMjYuNTc2MTcsNzA1LjE2NDA2eiIvPg0KCQk8L2c+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.logo=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("data:image/png;base64,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").then(tex=>
-{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.powered=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABABAMAAACekdKMAAAAMFBMVEUAAAByfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYZyfYYgo7vbAAAAD3RSTlMAdxHdu4hmVZnuRMwzqiLYE4y2AAAFw0lEQVR42u2Yy+9LQRTHp6Xq0VIkXkFvwkYslAWJiGJj2a6sJJe/oF3YWGElEQmxkYi4ErFWNpatWFmIx9Lm1sJCLKgqraqv82h726l6hOuRzDf53TtnOr+ZOZ+ZOffca5ycnJycnJycnJycnJycnJz+pi7g2G9osxjvzX8qB8ABcAAcgH8XwDa85dspNOiaRDuAR4U0PnHtDuyy7IJRJS6gvVmL6TywVkp4ZxIhulUxFvlaXQTrgEHbnMDH5XRjlXCdb+uAnc2ojWgFFTYBZ8e9tzcaswAk6v/3K4sPfPNRFj87IXj+KXQUS9m2jXoH1lMuLq2DtEcAtNMBT9PjanFq7ySAhbABVEAaeDaAwkk2D7GRqctAMQJIq2sBauLnB/VxCfqKpWrbRhSC1W5SMQ9RTgBUwKpF1ccmAIQ2gCxE+20Au9nSESvDgeIDkJSBMpA9vgyXdsj0H0GORL3n2fbwPOKoSQS4Q2cBOGzSJbQYAHDbZEI+rEuBcyZRlF71fIP/x0wBuIBOw6xH3xu2GQFAP2cegmvSwHkeqBZjECzB46UXD3bg8UKJCT6QYzgDY9uiU7hC11doERq6MAZ2CPJ7ipEulOrteDcB4KOZBpBG7zrV1JGzATzmIdnrl/go3bRiBJBHlZc+6ItjuQQ+yFLz8Gka2LZFRVTFGdoQJQ0LPodHnXkS8AjlRWkBLwKQswAs0PDzGpcsAAMNuG+5WgdqxwjgEcp8qcBjN5oZdPhEvOfhU/hsbJuVloWV6WWgp2IBLxXQNEwLDfKqoMXrEQBjATiFA3qePlgAZJRl+EStdaAQjfgALOC1zfeX8ALV+7S69JdALWjxHGqztmxyMnTD6OOBWvAdGDkn60c6vrI5H4CPnOJsWQDe8G0hIU0MB8ojFx+AFAeqeitLy5FkL3w0yNNcSOx3oDxjjxaH9XxldZluY5NBfwrAQvQbRjQXAO8UqVq5dh6A7HCgWzgdFwBdgOX4lMZbTndkWWkDN07Bk+zItllLdHm1+FkLwBSADNDf8B0AnGOp5gFYgJEexwcgGQx4iyeD9ybFkWsbDZbv0+2Y8XvGtqMpWsUimpMAzA1AUrj5ALjm2wCoONKB+ACYsEeDlU04MMs4imeJQqljslSuD4xl/zgAsx6ku/8DgDwaO9AwFU56qhzOPiXpKCzCpSSdb8v+CQDmXshb99cARAPFCOA1chWaFXlP55yn2FqEgiFvOSzYtmiJzisKB7MxQPS8iO63YsD3AHDv8QPgjR92eKuf9vts1wdZjvZhN4XajD35FNDiR7ln0LYBaILY+OZT4DsA+BkTP4AUrgXkxSJcDFps+72X7EGlx6mBbU/lAbdQjvKA7hSAlSuHxdw0gORsHrAUnXkAUuj+AQAZdHGRp9bShX2ECz1JRSk4zNhRJqj5SZQJfpgCUNS2eRsAP/usTDAxPxFKA834AZgAOM1z6qGgxxpdmUDQNjP25LtAsojxu0AehSkAF6RLXWR/EkAdVYEevQtswVtpMwuAB1JGh2jbxQcgBKrig/qSxTD6o2Nm7fttSY6uUnErV+jb4CJyaArAI5luJkCDOy5HAPISSB5A3wYbhJERahvtPALAAw2EI9Vzsh2TTuk23qEceN9d4vVVv227hNroe0CRi/o9IKTZTQFIAc/M8jwGEiouG2/042u8u25uAuPvAavRH7XhzqcBpICdRpssRa+aNLFoh2JeyBzU08fih/ht20WZXghW34s+/ZQnAKhzojsSH4CC/sjARPKamLXacOfTAIwfNSkCbROLluG9Tm2gdl3PY178tu2SBIpFQ6fHH//2GAvAogCkjtGDEAFQYPsu6DdBqw11bgFIF8dNHsQGIEFRSDOe0RS9YYJk23JMrw+/Cr9bFX0VXmNsACbhA088qXhBrMYAlq8Gjhh//FX4YNSGO7cASO9n9B99AuHk5OTk5OTk5OTk5OTk5OTk5OT0VX0B7+fX+9cwWYYAAAAASUVORK5CYII=").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.website=tex}).catch(err=>console.warn("Failed to load splash image: ",err))}}async _LoadSvgSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();
+if(loadingLogoAsset)loadingLogoAsset.LoadStaticTexture(this._webglRenderer).catch(err=>console.warn(`[C3 runtime] Failed to create texture for loading logo: `,err))}else if(loaderStyle===4){this._LoadSvgSplashImage("splash-images/splash-logo.svg").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.logo=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("splash-images/splash-poweredby-512.png").then(tex=>
+{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.powered=tex}).catch(err=>console.warn("Failed to load splash image: ",err));this._LoadBitmapSplashImage("splash-images/splash-website-512.png").then(tex=>{if(this._splashState==="done")this._webglRenderer.DeleteTexture(tex);else this._splashTextures.website=tex}).catch(err=>console.warn("Failed to load splash image: ",err))}}async _LoadSvgSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();
 const blob=await C3.FetchBlob(url);const drawable=await this._runtime.RasterSvgImage(blob,2048,2048);return await this._webglRenderer.CreateStaticTextureAsync(drawable,{mipMapQuality:"high"})}async _LoadBitmapSplashImage(url){url=(new URL(url,this._runtime.GetBaseURL())).toString();const blob=await C3.FetchBlob(url);return await this._webglRenderer.CreateStaticTextureAsync(blob,{mipMapQuality:"high"})}HideCordovaSplashScreen(){this._runtime.PostComponentMessageToDOM("runtime","hide-cordova-splash")}StartLoadingScreen(){this._loaderStartTime=
 Date.now();this._runtime.Dispatcher().addEventListener("loadingprogress",this._loadingprogress_handler);this._rafId=requestAnimationFrame(()=>this._DrawLoadingScreen());const loaderStyle=this._runtime.GetLoaderStyle();if(loaderStyle!==3)this.HideCordovaSplashScreen()}async EndLoadingScreen(){if(!this._webglRenderer)return;this._loadingProgress=1;const loaderStyle=this._runtime.GetLoaderStyle();if(loaderStyle===4)await this._splashDonePromise;this._splashDoneResolve=null;this._splashDonePromise=null;
 if(this._rafId!==-1){cancelAnimationFrame(this._rafId);this._rafId=-1}this._runtime.Dispatcher().removeEventListener("loadingprogress",this._loadingprogress_handler);this._loadingprogress_handler=null;if(this._percentText){this._percentText.Release();this._percentText=null}this._runtime.ReleaseLoadingLogoAsset();this._webglRenderer.Start();if(this._splashTextures.logo){this._webglRenderer.DeleteTexture(this._splashTextures.logo);this._splashTextures.logo=null}if(this._splashTextures.powered){this._webglRenderer.DeleteTexture(this._splashTextures.powered);
@@ -3539,6 +3539,51 @@ lastTapTime=-1E4;return"double-tap"}else{lastTapX=this._x;lastTapY=this._y;lastT
 }
 
 {
+'use strict';const C3=self.C3;C3.Plugins.TiledBg=class TiledBgPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;function WrapModeToStr(wrapMode){switch(wrapMode){case 0:return"clamp-to-edge";case 1:return"repeat";case 2:return"mirror-repeat"}return"repeat"}
+C3.Plugins.TiledBg.Type=class TiledBgType extends C3.SDKTypeBase{constructor(objectClass,exportData){super(objectClass);this._wrapX="repeat";this._wrapY="repeat";if(exportData){this._wrapX=WrapModeToStr(exportData[0]);this._wrapY=WrapModeToStr(exportData[1])}}Release(){super.Release()}OnCreate(){this.GetImageInfo().LoadAsset(this._runtime)}LoadTextures(renderer){return this.GetImageInfo().LoadStaticTexture(renderer,{sampling:this._runtime.GetSampling(),wrapX:this._wrapX,wrapY:this._wrapY})}ReleaseTextures(){this.GetImageInfo().ReleaseTexture()}};
+
+}
+
+{
+'use strict';const C3=self.C3;const C3X=self.C3X;const INITIALLY_VISIBLE=0;const ORIGIN=1;const IMAGE_OFFSET_X=4;const IMAGE_OFFSET_Y=5;const IMAGE_SCALE_X=6;const IMAGE_SCALE_Y=7;const IMAGE_ANGLE=8;const tempRect=C3.New(C3.Rect);const tempQuad=C3.New(C3.Quad);const rcTex=C3.New(C3.Rect);const qTex=C3.New(C3.Quad);
+C3.Plugins.TiledBg.Instance=class TiledBgInstance extends C3.SDKWorldInstanceBase{constructor(inst,properties){super(inst);this._imageOffsetX=0;this._imageOffsetY=0;this._imageScaleX=1;this._imageScaleY=1;this._imageAngle=0;this._ownImageInfo=null;if(properties){this.GetWorldInfo().SetVisible(!!properties[INITIALLY_VISIBLE]);this._imageOffsetX=properties[IMAGE_OFFSET_X];this._imageOffsetY=properties[IMAGE_OFFSET_Y];this._imageScaleX=properties[IMAGE_SCALE_X];this._imageScaleY=properties[IMAGE_SCALE_Y];
+this._imageAngle=C3.toRadians(properties[IMAGE_ANGLE])}}Release(){this._ReleaseOwnImage();super.Release()}_ReleaseOwnImage(){if(this._ownImageInfo){this._ownImageInfo.Release();this._ownImageInfo=null}}CalculateTextureCoordsFor3DFace(areaWidth,areaHeight,outQuad){const imageInfo=this.GetCurrentImageInfo();const imageWidth=imageInfo.GetWidth();const imageHeight=imageInfo.GetHeight();const imageOffsetX=this._imageOffsetX/imageWidth;const imageOffsetY=this._imageOffsetY/imageHeight;const imageAngle=
+this._imageAngle;rcTex.set(0,0,areaWidth/(imageWidth*this._imageScaleX),areaHeight/(imageHeight*this._imageScaleY));rcTex.offset(-imageOffsetX,-imageOffsetY);if(imageAngle===0)outQuad.setFromRect(rcTex);else outQuad.setFromRotatedRect(rcTex,-imageAngle)}Draw(renderer){const imageInfo=this.GetCurrentImageInfo();const texture=imageInfo.GetTexture();if(texture===null)return;renderer.SetTexture(texture);const imageWidth=imageInfo.GetWidth();const imageHeight=imageInfo.GetHeight();const imageOffsetX=this._imageOffsetX/
+imageWidth;const imageOffsetY=this._imageOffsetY/imageHeight;const wi=this.GetWorldInfo();rcTex.set(0,0,wi.GetWidth()/(imageWidth*this._imageScaleX),wi.GetHeight()/(imageHeight*this._imageScaleY));rcTex.offset(-imageOffsetX,-imageOffsetY);if(wi.HasMesh())this._DrawMesh(wi,renderer);else this._DrawStandard(wi,renderer)}_DrawStandard(wi,renderer){let quad=wi.GetBoundingQuad();if(this._runtime.IsPixelRoundingEnabled())quad=wi.PixelRoundQuad(quad);if(this._imageAngle===0)renderer.Quad3(quad,rcTex);else{qTex.setFromRotatedRect(rcTex,
+-this._imageAngle);renderer.Quad4(quad,qTex)}}_DrawMesh(wi,renderer){const transformedMesh=wi.GetTransformedMesh();if(wi.IsMeshChanged()){wi.CalculateBbox(tempRect,tempQuad,false);let quad=tempQuad;if(this._runtime.IsPixelRoundingEnabled())quad=wi.PixelRoundQuad(quad);let texCoords=rcTex;if(this._imageAngle!==0){qTex.setFromRotatedRect(rcTex,-this._imageAngle);texCoords=qTex}transformedMesh.CalculateTransformedMesh(wi.GetSourceMesh(),quad,texCoords);wi.SetMeshChanged(false)}transformedMesh.Draw(renderer)}GetCurrentImageInfo(){return this._ownImageInfo||
+this._objectClass.GetImageInfo()}IsOriginalSizeKnown(){return true}GetTexture(){return this.GetCurrentImageInfo().GetTexture()}_SetMeshChanged(){this.GetWorldInfo().SetMeshChanged(true)}_SetImageOffsetX(x){if(this._imageOffsetX===x)return;this._imageOffsetX=x;this._runtime.UpdateRender();this._SetMeshChanged()}_GetImageOffsetX(){return this._imageOffsetX}_SetImageOffsetY(y){if(this._imageOffsetY===y)return;this._imageOffsetY=y;this._runtime.UpdateRender();this._SetMeshChanged()}_GetImageOffsetY(){return this._imageOffsetY}_SetImageScaleX(x){if(this._imageScaleX===
+x)return;this._imageScaleX=x;this._runtime.UpdateRender();this._SetMeshChanged()}_GetImageScaleX(){return this._imageScaleX}_SetImageScaleY(y){if(this._imageScaleY===y)return;this._imageScaleY=y;this._runtime.UpdateRender();this._SetMeshChanged()}_GetImageScaleY(){return this._imageScaleY}_SetImageAngle(a){if(this._imageAngle===a)return;this._imageAngle=a;this._runtime.UpdateRender();this._SetMeshChanged()}_GetImageAngle(){return this._imageAngle}GetPropertyValueByIndex(index){switch(index){case IMAGE_OFFSET_X:return this._GetImageOffsetX();
+case IMAGE_OFFSET_Y:return this._GetImageOffsetY();case IMAGE_SCALE_X:return this._GetImageScaleX();case IMAGE_SCALE_Y:return this._GetImageScaleY();case IMAGE_ANGLE:return this._GetImageAngle()}}SetPropertyValueByIndex(index,value){switch(index){case IMAGE_OFFSET_X:this._SetImageOffsetX(value);break;case IMAGE_OFFSET_Y:this._SetImageOffsetY(value);break;case IMAGE_SCALE_X:this._SetImageScaleX(value);break;case IMAGE_SCALE_Y:this._SetImageScaleY(value);break;case IMAGE_ANGLE:this._SetImageAngle(value);
+break}}GetScriptInterfaceClass(){return self.ITiledBackgroundInstance}};const map=new WeakMap;
+self.ITiledBackgroundInstance=class ITiledBackgroundInstance extends self.IWorldInstance{constructor(){super();map.set(this,self.IInstance._GetInitInst().GetSdkInstance())}set imageOffsetX(x){C3X.RequireFiniteNumber(x);map.get(this)._SetImageOffsetX(x)}get imageOffsetX(){return map.get(this)._GetImageOffsetX()}set imageOffsetY(y){C3X.RequireFiniteNumber(y);map.get(this)._SetImageOffsetY(y)}get imageOffsetY(){return map.get(this)._GetImageOffsetY()}set imageScaleX(x){C3X.RequireFiniteNumber(x);map.get(this)._SetImageScaleX(x)}get imageScaleX(){return map.get(this)._GetImageScaleX()}set imageScaleY(y){C3X.RequireFiniteNumber(y);
+map.get(this)._SetImageScaleY(y)}get imageScaleY(){return map.get(this)._GetImageScaleY()}set imageAngle(a){C3X.RequireFiniteNumber(a);map.get(this)._SetImageAngle(a)}get imageAngle(){return map.get(this)._GetImageAngle()}set imageAngleDegrees(a){C3X.RequireFiniteNumber(a);map.get(this)._SetImageAngle(C3.toRadians(a))}get imageAngleDegrees(){return C3.toDegrees(map.get(this)._GetImageAngle())}get imageWidth(){return map.get(this).GetCurrentImageInfo().GetWidth()}get imageHeight(){return map.get(this).GetCurrentImageInfo().GetHeight()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.TiledBg.Cnds={OnURLLoaded(){return true},OnURLFailed(){return true}};
+
+}
+
+{
+'use strict';const C3=self.C3;
+C3.Plugins.TiledBg.Acts={SetImageOffsetX(x){this._SetImageOffsetX(x)},SetImageOffsetY(y){this._SetImageOffsetY(y)},SetImageScaleX(x){this._SetImageScaleX(x/100)},SetImageScaleY(y){this._SetImageScaleY(y/100)},SetImageAngle(a){this._SetImageAngle(C3.toRadians(a))},SetEffect(effect){this.GetWorldInfo().SetBlendMode(effect);this._runtime.UpdateRender()},async LoadURL(url,crossOrigin){if(this._ownImageInfo&&this._ownImageInfo.GetURL()===url)return;const runtime=this._runtime;const imageInfo=C3.New(C3.ImageInfo);
+try{await imageInfo.LoadDynamicAsset(runtime,url);if(!imageInfo.IsLoaded())throw new Error("image failed to load");if(this.WasReleased()){imageInfo.Release();return null}const texture=await imageInfo.LoadStaticTexture(runtime.GetRenderer(),{sampling:this._runtime.GetSampling(),wrapX:"repeat",wrapY:"repeat"});if(!texture)return}catch(err){console.error("Load image from URL failed: ",err);this.Trigger(C3.Plugins.TiledBg.Cnds.OnURLFailed);return}if(this.WasReleased()){imageInfo.Release();return}this._ReleaseOwnImage();
+this._ownImageInfo=imageInfo;runtime.UpdateRender();await this.TriggerAsync(C3.Plugins.TiledBg.Cnds.OnURLLoaded)}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Plugins.TiledBg.Exps={ImageWidth(){return this.GetCurrentImageInfo().GetWidth()},ImageHeight(){return this.GetCurrentImageInfo().GetHeight()},ImageOffsetX(){return this._imageOffsetX},ImageOffsetY(){return this._imageOffsetY},ImageScaleX(){return this._imageScaleX*100},ImageScaleY(){return this._imageScaleY*100},ImageAngle(){return C3.toDegrees(this._imageAngle)}};
+
+}
+
+{
 'use strict';const C3=self.C3;
 C3.Behaviors.DragnDrop=class DragnDropBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts);const rt=this._runtime.Dispatcher();this._disposables=new C3.CompositeDisposable(C3.Disposable.From(rt,"pointerdown",e=>this._OnPointerDown(e.data)),C3.Disposable.From(rt,"pointermove",e=>this._OnPointerMove(e.data)),C3.Disposable.From(rt,"pointerup",e=>this._OnPointerUp(e.data,false)),C3.Disposable.From(rt,"pointercancel",e=>this._OnPointerUp(e.data,true)))}Release(){this._disposables.Release();this._disposables=
 null;super.Release()}_OnPointerDown(e){if(e["pointerType"]==="mouse"&&e["button"]!==0)return;this._OnInputDown(e["pointerId"].toString(),e["pageX"]-this._runtime.GetCanvasClientX(),e["pageY"]-this._runtime.GetCanvasClientY())}_OnPointerMove(e){if((e["lastButtons"]&1)!==0&&(e["buttons"]&1)===0)this._OnInputUp(e["pointerId"].toString());else this._OnInputMove(e["pointerId"].toString(),e["pageX"]-this._runtime.GetCanvasClientX(),e["pageY"]-this._runtime.GetCanvasClientY())}_OnPointerUp(e,isCancel){if(e["pointerType"]===
@@ -3761,6 +3806,40 @@ this._mode="";this._propSet.clear();this._pinImagePoint=""},Pin(objectClass,mode
 }
 
 {
+'use strict';const C3=self.C3;C3.Behaviors.Rotate=class RotateBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.Rotate.Type=class RotateType extends C3.SDKBehaviorTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}};
+
+}
+
+{
+'use strict';const C3=self.C3;const SPEED=0;const ACCELERATION=1;const ENABLE=2;
+C3.Behaviors.Rotate.Instance=class RotateInstance extends C3.SDKBehaviorInstanceBase{constructor(inst,properties){super(inst);this._speed=0;this._acceleration=0;this._isEnabled=true;if(properties){this._speed=C3.toRadians(properties[SPEED]);this._acceleration=C3.toRadians(properties[ACCELERATION]);this._isEnabled=properties[ENABLE]}if(this._isEnabled)this._StartTicking()}Release(){super.Release()}SaveToJson(){return{"s":this._speed,"a":this._acceleration,"e":this._isEnabled}}LoadFromJson(o){this._speed=
+o["s"];this._acceleration=o["a"];this._SetEnabled(o["e"])}Tick(){if(!this._isEnabled)return;const dt=this._runtime.GetDt(this._inst);if(dt===0)return;if(this._acceleration!==0)this._speed+=this._acceleration*dt;if(this._speed!==0){const wi=this._inst.GetWorldInfo();wi.SetAngle(wi.GetAngle()+this._speed*dt);wi.SetBboxChanged()}}GetPropertyValueByIndex(index){switch(index){case SPEED:return C3.toDegrees(this._speed);case ACCELERATION:return C3.toDegrees(this._acceleration);case ENABLE:return this._isEnabled}}SetPropertyValueByIndex(index,
+value){switch(index){case SPEED:this._speed=C3.toRadians(value);break;case ACCELERATION:this._acceleration=C3.toRadians(value);break;case ENABLE:this._SetEnabled(value);break}}_SetEnabled(e){this._isEnabled=!!e;if(this._isEnabled)this._StartTicking();else this._StopTicking()}GetDebuggerProperties(){const prefix="behaviors.rotate";return[{title:"$"+this.GetBehaviorType().GetName(),properties:[{name:prefix+".properties.speed.name",value:C3.toDegrees(this._speed),onedit:v=>this._speed=C3.toRadians(v)},
+{name:prefix+".properties.acceleration.name",value:C3.toDegrees(this._acceleration),onedit:v=>this._acceleration=C3.toRadians(v)},{name:prefix+".properties.enabled.name",value:this._isEnabled,onedit:v=>this._SetEnabled(v)}]}]}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.Rotate.Cnds={IsEnabled(){return this._isEnabled}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.Rotate.Acts={SetSpeed(s){this._speed=C3.toRadians(s)},SetAcceleration(a){this._acceleration=C3.toRadians(a)},SetEnabled(e){this._SetEnabled(e)}};
+
+}
+
+{
+'use strict';const C3=self.C3;C3.Behaviors.Rotate.Exps={Speed(){return C3.toDegrees(this._speed)},Acceleration(){return C3.toDegrees(this._acceleration)}};
+
+}
+
+{
 const C3 = self.C3;
 self.C3_GetObjectRefTable = function () {
 	return [
@@ -3771,6 +3850,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio,
 		C3.Plugins.Touch,
 		C3.Behaviors.Pin,
+		C3.Behaviors.Rotate,
+		C3.Plugins.TiledBg,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Cnds.Compare,
@@ -3779,9 +3860,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Acts.SetPosToObject,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
+		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
@@ -3792,7 +3873,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Acts.SetOpacity,
+		C3.Behaviors.Tween.Acts.TweenOneProperty,
+		C3.Plugins.TiledBg.Acts.SetPos,
+		C3.Plugins.TiledBg.Acts.SetWidth,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Sprite.Acts.SetVisible,
@@ -3826,6 +3912,7 @@ self.C3_JsPropNameTable = [
 	{Touch: 0},
 	{bgmdpi: 0},
 	{Pin: 0},
+	{Rotate: 0},
 	{swirlmdpi: 0},
 	{bannermdpi: 0},
 	{welldonemdpi: 0},
@@ -3833,6 +3920,10 @@ self.C3_JsPropNameTable = [
 	{Asset6mdpi: 0},
 	{star1mdpi2: 0},
 	{star1mdpi3: 0},
+	{fade: 0},
+	{"1to2": 0},
+	{"2to3": 0},
+	{feegomdpi2: 0},
 	{wrong: 0},
 	{howmanywrong: 0}
 ];
@@ -3948,28 +4039,40 @@ self.C3_ExpressionFuncs = [
 		() => "Level1",
 		() => "",
 		() => 0.2,
+		() => 0.5,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
 		},
 		() => 0.3,
-		() => 0.5,
 		() => 0.1,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
 		() => "Level2",
+		() => 1280,
+		() => 720,
+		() => 640,
+		() => 360,
+		() => 100,
+		() => 398,
+		() => 310,
+		() => 2.5,
+		() => "1to2",
+		() => 500,
+		() => 1.5,
 		() => "Level3",
 		() => "Level4",
 		() => "Level5",
 		() => "Level6",
-		() => 640,
-		() => 360,
 		() => "main",
 		() => -10,
 		() => "1",
 		() => "wrong1",
+		() => "eat",
+		() => "correct",
+		() => -5,
 		() => -15
 ];
 
