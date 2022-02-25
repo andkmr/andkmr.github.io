@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, width = device-width"
+    name="viewport" />
+
+  <title>Know My World</title>
+
+  <link rel="stylesheet" type="text/css" href="media/jquery/animate.min.css" />
+  <link rel="stylesheet" type="text/css" href="media/style.css" />
+
+  <script>
+    document.addEventListener(
+      "touchmove",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
+    var lastTouchEnd = 0;
+
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        var now = new Date().getTime();
+        if (now - lastTouchEnd <= 50) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      },
+      { passive: false }
+    );
+  </script>
+</head>
+
+<body>
+  <!--Preloader-->
+  <div class="row">
+    <div id="html5Loader" class="col-sm-12">
+      <div id="DvLoaderCont">
+        <div id="DvLoaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div id="load_images" style="width: 0px; height: 0px; opacity: 0">
+      <img src="media/assets/background_1.png">
+      <img src="media/assets/background_2.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_4.png">
+    </div>
+
+    <div id="game_container"></div>
+
+    <div id="hiddenShapesBox"></div>
+    <div id="levelProgressBarbg">
+      <div id="levelProgressBar">
+        <div id="prevNo"></div>
+        <div id="nextNo"></div>
+      </div>
+    </div>
+    <div id="teenabuttonmdpi"></div>
+    <div id="teenabuttonmdpi_slide">
+      <div id="homeblack"></div>
+      <div id="castblack"></div>
+    </div>
+    <div id="teenamdpi"></div>
+
+    <div id="endScreen">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://assets6.lottiefiles.com/private_files/lf30_9swauupx.json" background="transparent"
+        speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+
+      <lottie-player id="star3" src="https://assets6.lottiefiles.com/private_files/lf30_nj4asj5o.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star2" src="https://assets2.lottiefiles.com/private_files/lf30_ypj3nhxd.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star1" src="https://assets1.lottiefiles.com/private_files/lf30_d4ciqieu.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <div id="replayBtn"></div>
+      <div id="exitBtn"></div>
+
+    </div>
+
+  </div>
+
+  <audio id="bgm" src="media/audio/bgm.mp3" type="audio/mpeg"></audio>
+  <audio id="endscreenaudio" src="media/audio/correct_celebration.mp3" type="audio/mpeg"></audio>
+  <audio id="correctaudio" src="media/audio/correct_input.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction1" src="media/audio/1.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction2" src="media/audio/2.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction3" src="media/audio/3.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption" src="media/audio/tryagainoption.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption2" src="media/audio/tryagainoption2.mp3" type="audio/mpeg"></audio>
+
+  <audio id="proundmp3" src="media/audio/i_am_so_proud_of_you.mp3" type="audio/mpeg"></audio>
+
+  <audio id="1a" src="media/audio/1a.mp3" type="audio/mpeg"></audio>
+  <audio id="1b" src="media/audio/1b.mp3" type="audio/mpeg"></audio>
+  <audio id="2a" src="media/audio/2a.mp3" type="audio/mpeg"></audio>
+  <audio id="2b" src="media/audio/2b.mp3" type="audio/mpeg"></audio>
+
+
+  <script type="text/javascript" src="media/jquery/jquery.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery.ui.touch-punch.js"></script>
+
+  <!-- Loader Libraries Starts -->
+  <script type="text/javascript" src="media/preloader/jquery.html5Loader.min.js"></script>
+  <script type="text/javascript" src="media/preloader/animation/jquery.big-counter.js"></script>
+  <script type="text/javascript" src="media/preloader/Main.class.js"></script>
+  <script type="text/javascript" src="media/preloader/configPreload.js"></script>
+  <!--Loader Libraries Ends -->
+
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+
+  <script type="text/javascript" src="media/data/data.js"></script>
+  <script type="text/javascript" src="media/custom.js"></script>
+</body>
+
+</html>
