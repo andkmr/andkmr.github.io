@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // Declare all var and call functions and listeners
     var quesPopupTimer;
-    var currentQuestCtr = 4;
+    var currentQuestCtr = 0;
     var levelBarCtr = 0;
     var foundElementCtr = 0;
     var currentQuesTotalElm = 0;
