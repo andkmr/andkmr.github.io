@@ -262,23 +262,68 @@ $(document).ready(function () {
         $("#nextNo").html(nextLevel);
         foundElementCtr = 0;
         levelBarCtr = 0;
-        $("#levelProgressBar").css("width", "0px");
+        $("#levelProgressBarbg").css("opacity", "1");
         $("#levelProgressBarbg").show();
-        $("#levelProgressBarbg").animate({ "opacity": "1" }, 1000, function () {
+        $("#levelProgressBarStat").animate({ "top": "40px" }, 500, function () {
+
+        });
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+
+        });
+
+        setTimeout(function () {
+            $("#maskdiv").addClass("maskdiv");
+            $("#maskdiv").addClass("myzidex");
+            setTimeout(function () {
+                $("#maskdiv").removeClass("maskdiv");
+                $("#maskdiv").removeClass("myzidex");
+            }, 1000)
+        }, 1000)
+
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
             var mybar = setInterval(function () {
                 levelBarCtr++;
-                if (levelBarCtr == 335) {
+                if (levelBarCtr == 40) {
                     clearInterval(mybar);
                     setTimeout(function () {
-                        $("#levelProgressBarbg").hide();
-                        currentQuestCtr++;
-                        createNewQuestion();
+                        $("#levelProgressBarStat").animate({ "top": "-40px" }, 500, function () {
+
+                        });
+                        $("#levelProgressBar").animate({ "top": "-40px" }, 500, function () {
+                            $("#levelProgressBarbg").hide();
+                            currentQuestCtr++;
+                            createNewQuestion();
+                        })
+                        
                         // console.log(currentQuestCtr+"-----"+hiddenObjData["hiddenObjQues"].length);
                     }, 500)
 
                 }
-                $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
-                // console.log(levelBarCtr);
+                // $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
+
+                if (prevLevel == 1) {
+                    $("#levelProgressBar").css("width", (2.05 * levelBarCtr) + "px");
+                }
+                if (prevLevel == 2) {
+                    $("#levelProgressBar").css("width", (96 + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 3) {
+                    $("#levelProgressBar").css("width", ((96 * 2) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 4) {
+                    $("#levelProgressBar").css("width", ((96 * 3) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 5) {
+                    $("#levelProgressBar").css("width", ((96 * 4) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 6) {
+                    $("#levelProgressBar").css("width", ((96 * 5) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 7) {
+                    $("#levelProgressBar").css("width", ((96 * 6) + (2.05 * levelBarCtr)) + "px");
+                }
+                
+                
 
             }, 3);
         });

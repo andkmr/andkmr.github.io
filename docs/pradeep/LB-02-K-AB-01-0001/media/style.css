@@ -759,16 +759,6 @@ supported by Chrome, Opera and Firefox */
 /* end 5 */
 
 
-
-
-
-
-
-
-
-
-
-
 #teenabuttonmdpi{
     position:absolute;
     width: 270px;
@@ -778,6 +768,7 @@ supported by Chrome, Opera and Firefox */
     left: 4px;
     top: 8px;
     cursor: pointer;
+    display: none;
 }
 .teenabuttonmdpi_back{
     background-image: url('../media/assets/ui/teenabuttonmdpi_back.png') !important;
@@ -836,18 +827,79 @@ supported by Chrome, Opera and Firefox */
     position: absolute;
     width: 1920px;
     height: 1080px;
-    background-color: white;
+    background-color: #f9f9f9;
     opacity: 0;
     display: none;
 }
+#mask1stdiv{
+    background-color: #d6f3fe;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: scale(1,1);
+    /* transform-origin: 0 0; */
+    animation: leaves 3s;
+    z-index: 0;
+}
+.maskdiv{
+    background-color: #e6e6e6;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: scale(1,1);
+    /* transform-origin: 0 0; */
+    animation: leaves 3s;
+}
+
+.myzidex{
+    z-index: 1;
+}
+
+@keyframes leaves {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(30.0);
+    }
+}
+
+#levelProgressBarStat{
+    position: absolute;
+    width: 480px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 6px #888888a1;
+    left: 670px;
+    top: -40px;
+    z-index: 2;
+}
 #levelProgressBar{ 
     position: absolute;
-    background-image: url('../media/assets/fill_bar_new.png');
     width: 0px;
-    height: 116px;
-    left: 27%;
-    top: 46%;
-
+    height: 40px;
+    background-color: #ffdce9;
+    border-radius: 20px;
+    box-shadow: 0px 6px #888888;
+    left: 670px;
+    top: -40px;
+    z-index: 2;
+}
+#feego{
+    position: absolute;
+    width: 43px;
+    height: 57px;
+    background-image: url('../media/assets/ui/feego.png');
+    background-size: cover;
+    right: -20px;
+    top: -8px;
 }
 
 #prevNo{

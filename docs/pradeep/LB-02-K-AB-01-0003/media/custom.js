@@ -36,10 +36,10 @@ $(document).ready(function () {
         }).appendTo('#game_container');
 
         setTimeout(function () {
-           animslid2();
+            animslid2();
         }, 12000)
     }
-    function animslid2(){
+    function animslid2() {
         mydragitemaudio("they_present_our_hands_a2");
         $("#gameplayanim").addClass("gameplayanim2");
         $("#anim2").show();
@@ -47,10 +47,10 @@ $(document).ready(function () {
         $("#anim4").show();
         animActQueCtr++;
         setTimeout(function () {
-           animslid3();
+            animslid3();
         }, 12000)
     }
-    function animslid3(){
+    function animslid3() {
         mydragitemaudio("germs_can_enter_body_a3");
         $("#anim2").hide();
         $("#anim3").hide();
@@ -58,10 +58,10 @@ $(document).ready(function () {
         $("#gameplayanim").removeClass("gameplayanim2").addClass("gameplayanim3");
         animActQueCtr++;
         setTimeout(function () {
-           animslid4();
+            animslid4();
         }, 12000)
     }
-    function animslid4(){
+    function animslid4() {
         mydragitemaudio("so_we_should_always_take_care_a4");
         $("#gameplayanim").removeClass("gameplayanim3").addClass("gameplayanim4");
         $("#anim5").show();
@@ -75,7 +75,7 @@ $(document).ready(function () {
     }
 
     // createTabActivity();
-  
+
     $('#teenabuttonmdpi').bind('click', function () {
 
         if (tenaTabFlag == false) {
@@ -130,47 +130,47 @@ $(document).ready(function () {
 
         try {
             var myimageUrl = "media/assets/" + gamedata["tabactivity"][tabActQueCtr]["bg"];
-        $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
+            $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
         } catch (error) {
-            
+
         }
-        
+
         currentTabTotalQue = gamedata["tabactivity"][tabActQueCtr]["tabItems"].length;
-        
+
         for (var i = 0; i < gamedata["tabactivity"][tabActQueCtr]["tabItems"].length; i++) {
             $("<div/>", {
                 'id': gamedata["tabactivity"][tabActQueCtr]["tabItems"][i],
                 'num': gamedata["tabactivity"][tabActQueCtr]["tabItemsHabbites"][i]
             }).appendTo('#game_container');
 
-            $('#'+gamedata["tabactivity"][tabActQueCtr]["tabItems"][i]).bind('click', function () {
+            $('#' + gamedata["tabactivity"][tabActQueCtr]["tabItems"][i]).bind('click', function () {
                 tabActArrQueCtr++;
                 $(this).removeClass('animated zoomIn').addClass('animated zoomIn');
-                if($(this).attr("num") == "yes"){
+                if ($(this).attr("num") == "yes") {
                     mycorrectaudio();
                     playtabaudio($(this).attr("id"));
                     tabCorrectCtr++;
                     $(this).addClass("correctAns");
-                    if(currentTabTotalQue == tabActArrQueCtr || tabCorrectCtr == (gamedata["tabactivity"][tabActQueCtr]["totalCorrect"])){
+                    if (currentTabTotalQue == tabActArrQueCtr || tabCorrectCtr == (gamedata["tabactivity"][tabActQueCtr]["totalCorrect"])) {
                         nextTabActivity()
                     }
-                }else{
+                } else {
                     wrongAttempCtr++;
                     playwrongtabaudio(gamedata["tabactivity"][tabActQueCtr]["wrong_mascot_audio"]);
                     $(this).addClass("wrongAns");
-                    if(currentTabTotalQue == tabActArrQueCtr){
+                    if (currentTabTotalQue == tabActArrQueCtr) {
                         nextTabActivity();
                     }
                 }
-                
+
             })
 
         }
     }
 
-    function nextTabActivity(){
+    function nextTabActivity() {
         allcorrecttabaudio(gamedata["tabactivity"][tabActQueCtr]["allcorrectaudio"]);
-        if(tabActQueCtr == (gamedata["tabactivity"].length - 1)){
+        if (tabActQueCtr == (gamedata["tabactivity"].length - 1)) {
             tabActivityStatus = false;
         }
         tabActArrQueCtr = 0;
@@ -283,7 +283,7 @@ $(document).ready(function () {
                     if (prevdragId == currentDragId) {
                         // console.log("pre post")
                     } else {
-                        
+
                         if ($(this).attr("id").split('_drop')[0] == currentDragId) {
                             $(this).droppable("disable");
                             $("#" + currentDragId).hide();
@@ -308,7 +308,7 @@ $(document).ready(function () {
                         } else {
                             // tryagainaudio();
                             // mascottryaudio();
-                            
+
                             // console.log("false..");
                             // $("#"+currentDragId).animate({ top: parseFloat($("#"+currentDragId).attr('original-top')), left: parseFloat($("#"+currentDragId).attr('original-left')) }, 0, function () {
                             // });
@@ -346,66 +346,94 @@ $(document).ready(function () {
 
     function levelprogressbar() {
 
-        if (currentQuestCtr == (gamedata["gamedataQues"].length)) {
-            showGameEndScreen();
-        } else {
-            // supersoundfn();
-            prevLevel++;
-            nextLevel++;
-            $("#prevNo").html(prevLevel);
-            $("#nextNo").html(nextLevel);
-            foundElementCtr = 0;
-            levelBarCtr = 0;
-            // $("#levelProgressBar").css("width", "0px");
-            $("#levelProgressBarbg").show();
-            $("#levelProgressBarbg").animate({ "opacity": "1" }, 1000, function () {
-                var mybar = setInterval(function () {
-                    levelBarCtr++;
-                    if (levelBarCtr == 40) {
-                        clearInterval(mybar);
-                        setTimeout(function () {
-                            // tabActivityStatus = false;  
-                            if(tabActivityStatus == true){
+        // supersoundfn();
+        prevLevel++;
+        nextLevel++;
+        $("#prevNo").html(prevLevel);
+        $("#nextNo").html(nextLevel);
+        foundElementCtr = 0;
+        levelBarCtr = 0;
+        $("#levelProgressBarbg").css("opacity", "1");
+        $("#levelProgressBarbg").show();
+        $("#levelProgressBarStat").animate({ "top": "40px" }, 500, function () {
+
+        });
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+
+        });
+
+        setTimeout(function () {
+            $("#maskdiv").addClass("maskdiv");
+            $("#maskdiv").addClass("myzidex");
+            setTimeout(function () {
+                $("#maskdiv").removeClass("maskdiv");
+                $("#maskdiv").removeClass("myzidex");
+            }, 1000)
+        }, 1000)
+
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+            var mybar = setInterval(function () {
+                levelBarCtr++;
+                if (levelBarCtr == 40) {
+                    clearInterval(mybar);
+                    setTimeout(function () {
+                        // tabActivityStatus = false;
+                        $("#levelProgressBarStat").animate({ "top": "-40px" }, 500, function () {
+
+                        });
+                        $("#levelProgressBar").animate({ "top": "-40px" }, 500, function () {
+                            
+                            if (tabActivityStatus == true) {
                                 // console.log("tab tab")
                                 $("#levelProgressBarbg").hide();
                                 tabActQueCtr++;
                                 createTabActivity();
-                            }else{
+                            } else {
                                 // console.log("drag drag");
                                 $("#levelProgressBarbg").hide();
                                 tabActivityStatus = false;
                                 animActivityStatus = true;
                                 createGameElemnts();
                             }
-                           
-                        }, 500)
+                        })
 
-                    }
-                    if(prevLevel == 1){
-                        $("#levelProgressBar").css("width", (1.71 * levelBarCtr) + "px");
-                    }
-                    if(prevLevel == 2){
-                        $("#levelProgressBar").css("width", (68.4 + (1.71 * levelBarCtr)) + "px");
-                    }
-                    if(prevLevel == 3){
-                        $("#levelProgressBar").css("width", ((68.4*2) + (1.71 * levelBarCtr)) + "px");
-                    }
-                    if(prevLevel == 4){
-                        $("#levelProgressBar").css("width", ((68.4*3) + (1.71 * levelBarCtr)) + "px");
-                    }
-                    if(prevLevel == 5){
-                        $("#levelProgressBar").css("width", ((68.4*4) + (1.71 * levelBarCtr)) + "px");
-                    }
-                    if(prevLevel == 6){
-                        $("#levelProgressBar").css("width", ((68.4*5) + (1.71 * levelBarCtr)) + "px");
-                    }
-                    
-                    // console.log(levelBarCtr);
+                    }, 500)
 
-                }, 3);
-            });
+                }
+                if (prevLevel == 1) {
+                    $("#levelProgressBar").css("width", (1.71 * levelBarCtr) + "px");
+                }
+                if (prevLevel == 2) {
+                    $("#levelProgressBar").css("width", (68.4 + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 3) {
+                    $("#levelProgressBar").css("width", ((68.4 * 2) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 4) {
+                    $("#levelProgressBar").css("width", ((68.4 * 3) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 5) {
+                    $("#levelProgressBar").css("width", ((68.4 * 4) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 6) {
+                    $("#levelProgressBar").css("width", ((68.4 * 5) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 7) {
+                    $("#levelProgressBar").css("width", ((68.4 * 6) + (1.71 * levelBarCtr)) + "px");
+                }
+
+                // console.log(levelBarCtr);
+
+            }, 3);
+        });
+
+        if (currentQuestCtr == (gamedata["gamedataQues"].length)) {
+            setTimeout(function () {
+                showGameEndScreen();
+            }, 1900)
 
         }
+
     }
 
     $('#replayBtn').bind('click', function () {
@@ -455,39 +483,39 @@ $(document).ready(function () {
     var letdragaudio;
     var letaudio;
 
-    function stopallaudio(){
+    function stopallaudio() {
         try {
-            tabaudio.pause(); 
-            alltabcorrectaudio.pause(); 
-            wrongtabaudio.pause(); 
-            letdragaudio.pause(); 
-            letaudio.pause(); 
-            tryagainoptionaudio2.pause(); 
-            tryagainoptionaudio.pause(); 
-            mascot_try_audio.pause(); 
-            supersound.pause(); 
-            proudofyouaudio.pause();    
+            tabaudio.pause();
+            alltabcorrectaudio.pause();
+            wrongtabaudio.pause();
+            letdragaudio.pause();
+            letaudio.pause();
+            tryagainoptionaudio2.pause();
+            tryagainoptionaudio.pause();
+            mascot_try_audio.pause();
+            supersound.pause();
+            proudofyouaudio.pause();
         } catch (error) {
-            
+
         }
-        
+
     }
 
-    function playtabaudio(myid){
+    function playtabaudio(myid) {
         stopallaudio();
         tabaudio = document.createElement("audio");
         tabaudio.src = "media/audio/" + myid + ".mp3";
         tabaudio.play();
     }
 
-    function allcorrecttabaudio(myid){
+    function allcorrecttabaudio(myid) {
         stopallaudio();
         alltabcorrectaudio = document.createElement("audio");
         alltabcorrectaudio.src = "media/audio/" + myid + ".mp3";
         alltabcorrectaudio.play();
     }
 
-    function playwrongtabaudio(myid){
+    function playwrongtabaudio(myid) {
         stopallaudio();
         wrongtabaudio = document.createElement("audio");
         wrongtabaudio.src = "media/audio/" + myid + ".mp3";
@@ -516,7 +544,7 @@ $(document).ready(function () {
     function mycorrectaudio() {
         correctinput.play();
     }
-    function mydragitemaudio(myid){
+    function mydragitemaudio(myid) {
         stopallaudio();
         letdragaudio = document.createElement("audio");
         letdragaudio.src = "media/audio/" + myid + ".mp3";
@@ -524,19 +552,19 @@ $(document).ready(function () {
     }
     function letbeginaudio() {
         stopallaudio();
-        if(animActivityStatus == true){
+        if (animActivityStatus == true) {
             letaudio = document.createElement("audio");
             letaudio.src = "media/audio/" + gamedata["animationactivity"][animActQueCtr]["animaudio"] + ".mp3";
         }
-        if(tabActivityStatus == true){
+        if (tabActivityStatus == true) {
             letaudio = document.createElement("audio");
             letaudio.src = "media/audio/" + gamedata["tabactivity"][tabActQueCtr]["mascot_audio"] + ".mp3";
-        
+
         }
-        if(dragActivityStatus == true){
+        if (dragActivityStatus == true) {
             letaudio = document.createElement("audio");
             letaudio.src = "media/audio/" + gamedata["gamedataQues"][currentQuestCtr]["mascot_audio"] + ".mp3";
-        
+
         }
         letaudio.currentTime = 0;
         letaudio.pause();

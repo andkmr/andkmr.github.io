@@ -14,12 +14,12 @@ $(document).ready(function () {
     var hideObjIdArry = [];
     var hideObjIdArryCtr = 0;
     var tenaTabFlag = false;
-   
+
     var currentDragId, prevdragId;
 
     createGameElemnts();
-   
-   
+
+
     $('#teenabuttonmdpi').bind('click', function () {
 
         if (tenaTabFlag == false) {
@@ -61,7 +61,7 @@ $(document).ready(function () {
         clearTimeout(quesPopupTimer);
         $("#questionBox").show();
         $("#questionBox").removeClass('animated zoomIn').addClass('animated zoomIn');
-        
+
     });
     // function for createGameElemnts
     function createGameElemnts() {
@@ -107,7 +107,7 @@ $(document).ready(function () {
                 scroll: false,
                 zIndex: 100,
                 revert: function (p_bDropped) {
-                    
+
                     if (!p_bDropped) {
                         // console.log("ccc")
                         tryagainaudio();
@@ -175,14 +175,14 @@ $(document).ready(function () {
                         if ($(this).attr("id").split('_')[0] == currentDragId.split('_')[0]) {
                             $(this).droppable("disable");
                             $("#" + currentDragId).hide();
-                            
+
                             var imageUrl = "media/assets/" + $(this).attr("id").split('_')[0] + ".png";
                             // console.log(imageUrl)
                             $(this).css('background-image', 'url(' + imageUrl + ')');
                             $(this).removeClass('animated zoomIn').addClass('animated zoomIn');
                             mycorrectaudio();
                             foundElementCtr++;
-                            if(currentQuesTotalElm == foundElementCtr){
+                            if (currentQuesTotalElm == foundElementCtr) {
                                 levelprogressbar();
                             }
 
@@ -228,11 +228,6 @@ $(document).ready(function () {
     }
 
     function levelprogressbar() {
-        
-        if(currentQuestCtr == (gamedata["gamedataQues"].length - 1)){
-        // if(currentQuestCtr == 0){
-            showGameEndScreen();
-        }else{
             supersoundfn();
             prevLevel++;
             nextLevel++;
@@ -240,28 +235,74 @@ $(document).ready(function () {
             $("#nextNo").html(nextLevel);
             foundElementCtr = 0;
             levelBarCtr = 0;
-            $("#levelProgressBar").css("width", "0px");
+            $("#levelProgressBarbg").css("opacity", "1");
             $("#levelProgressBarbg").show();
-            $("#levelProgressBarbg").animate({ "opacity": "1" }, 1000, function () {
+            $("#levelProgressBarStat").animate({ "top": "40px" }, 500, function () {
+
+            });
+            $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+
+            });
+
+            setTimeout(function () {
+                $("#maskdiv").addClass("maskdiv");
+                $("#maskdiv").addClass("myzidex");
+                setTimeout(function () {
+                    $("#maskdiv").removeClass("maskdiv");
+                    $("#maskdiv").removeClass("myzidex");
+                }, 1000)
+            }, 1000)
+
+
+            $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
                 var mybar = setInterval(function () {
                     levelBarCtr++;
-                    if (levelBarCtr == 335) {
+                    if (levelBarCtr == 40) {
                         clearInterval(mybar);
                         setTimeout(function () {
-                            $("#levelProgressBarbg").hide();
-                            currentQuestCtr++;
-                            createGameElemnts();
-                            // console.log(currentQuestCtr+"-----"+hiddenObjData["hiddenObjQues"].length);
+                            $("#levelProgressBarStat").animate({ "top": "-40px" }, 500, function () {
+
+                            });
+                            $("#levelProgressBar").animate({ "top": "-40px" }, 500, function () {
+                                $("#levelProgressBarbg").hide();
+                                currentQuestCtr++;
+                                createGameElemnts();
+                            })
+
                         }, 500)
-    
+
                     }
-                    $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
-                    // console.log(levelBarCtr);
-    
+                    // $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
+                    if (prevLevel == 1) {
+                        $("#levelProgressBar").css("width", (2.05 * levelBarCtr) + "px");
+                    }
+                    if (prevLevel == 2) {
+                        $("#levelProgressBar").css("width", (96 + (2.05 * levelBarCtr)) + "px");
+                    }
+                    if (prevLevel == 3) {
+                        $("#levelProgressBar").css("width", ((96 * 2) + (2.05 * levelBarCtr)) + "px");
+                    }
+                    if (prevLevel == 4) {
+                        $("#levelProgressBar").css("width", ((96 * 3) + (2.05 * levelBarCtr)) + "px");
+                    }
+                    if (prevLevel == 5) {
+                        $("#levelProgressBar").css("width", ((96 * 4) + (2.05 * levelBarCtr)) + "px");
+                    }
+                    if (prevLevel == 6) {
+                        $("#levelProgressBar").css("width", ((96 * 5) + (2.05 * levelBarCtr)) + "px");
+                    }
+                    if (prevLevel == 7) {
+                        $("#levelProgressBar").css("width", ((96 * 6) + (2.05 * levelBarCtr)) + "px");
+                    }
+
                 }, 3);
             });
 
-        }
+            if (currentQuestCtr == (gamedata["gamedataQues"].length - 1)) {
+                setTimeout(function () {
+                    showGameEndScreen();
+                }, 1900)
+            }
     }
 
     $('#replayBtn').bind('click', function () {
@@ -290,13 +331,13 @@ $(document).ready(function () {
 
     var proudofyouaudio = document.createElement("audio");
     proudofyouaudio.src = "media/audio/i_am_so_proud_of_you.mp3";
-    
+
     var correctinput = document.createElement("audio");
     correctinput.src = "media/audio/correct_input.mp3";
 
     var supersound = document.createElement("audio");
     supersound.src = "media/audio/super.mp3";
-    
+
 
     var letaudio = document.createElement("audio");
     letaudio.src = "media/audio/" + gamedata["gamedataQues"][currentQuestCtr]["mascot_audio"] + ".mp3";
@@ -311,11 +352,11 @@ $(document).ready(function () {
     tryagainoptionaudio2.src = "media/audio/tryagainoption2.mp3";
 
 
-    function mascottryaudio(){
+    function mascottryaudio() {
         mascot_try_audio.play();
     }
 
-    function supersoundfn(){
+    function supersoundfn() {
         supersound.play();
     }
 
@@ -328,7 +369,7 @@ $(document).ready(function () {
     function proudofYouAudioFn() {
         proudofyouaudio.play();
     }
-    
+
     function mycorrectaudio() {
         correctinput.play();
     }
