@@ -70,19 +70,19 @@ $(document).ready(function () {
 
         // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
 
-        if(currentQuestCtr ==0){
+        if (currentQuestCtr == 0) {
             $("#wrapper").addClass("background_1");
         }
-        if(currentQuestCtr ==1){
+        if (currentQuestCtr == 1) {
             $("#wrapper").removeClass("background_1").addClass("background_2");
         }
-        if(currentQuestCtr ==2){
+        if (currentQuestCtr == 2) {
             $("#wrapper").removeClass("background_2").addClass("background_3");
         }
-        if(currentQuestCtr ==3){
+        if (currentQuestCtr == 3) {
             $("#wrapper").removeClass("background_3").addClass("background_4");
         }
-        if(currentQuestCtr ==4){
+        if (currentQuestCtr == 4) {
             $("#wrapper").removeClass("background_4").addClass("background_5");
         }
 
@@ -201,11 +201,11 @@ $(document).ready(function () {
                             mycorrectaudio();
                             foundElementCtr++;
                             if (currentQuesTotalElm == foundElementCtr) {
-                              
+
                                 setTimeout(function () {
                                     levelprogressbar();
                                 }, 500)
-                                
+
                             }
 
                             $("#" + currentDragId).animate({ top: parseFloat($("#" + currentDragId).attr('original-top')), left: parseFloat($("#" + currentDragId).attr('original-left')) }, 0, function () {
@@ -251,81 +251,84 @@ $(document).ready(function () {
     }
 
     function levelprogressbar() {
+        setTimeout(function () {
             supersoundfn();
-            prevLevel++;
-            nextLevel++;
-            $("#prevNo").html(prevLevel);
-            $("#nextNo").html(nextLevel);
-            foundElementCtr = 0;
-            levelBarCtr = 0;
-            $("#levelProgressBarbg").css("opacity", "1");
-            $("#levelProgressBarbg").show();
-            $("#levelProgressBarStat").animate({ "top": "40px" }, 500, function () {
+        }, 300)
 
-            });
-            $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+        prevLevel++;
+        nextLevel++;
+        $("#prevNo").html(prevLevel);
+        $("#nextNo").html(nextLevel);
+        foundElementCtr = 0;
+        levelBarCtr = 0;
+        $("#levelProgressBarbg").css("opacity", "1");
+        $("#levelProgressBarbg").show();
+        $("#levelProgressBarStat").animate({ "top": "40px" }, 500, function () {
 
-            });
+        });
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
 
+        });
+
+        setTimeout(function () {
+            $("#maskdiv").addClass("maskdiv");
+            $("#maskdiv").addClass("myzidex");
             setTimeout(function () {
-                $("#maskdiv").addClass("maskdiv");
-                $("#maskdiv").addClass("myzidex");
-                setTimeout(function () {
-                    $("#maskdiv").removeClass("maskdiv");
-                    $("#maskdiv").removeClass("myzidex");
-                }, 1000)
+                $("#maskdiv").removeClass("maskdiv");
+                $("#maskdiv").removeClass("myzidex");
             }, 1000)
+        }, 1000)
 
 
-            $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
-                var mybar = setInterval(function () {
-                    levelBarCtr++;
-                    if (levelBarCtr == 40) {
-                        clearInterval(mybar);
-                        setTimeout(function () {
-                            $("#levelProgressBarStat").animate({ "top": "-40px" }, 500, function () {
+        $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
+            var mybar = setInterval(function () {
+                levelBarCtr++;
+                if (levelBarCtr == 40) {
+                    clearInterval(mybar);
+                    setTimeout(function () {
+                        $("#levelProgressBarStat").animate({ "top": "-40px" }, 500, function () {
 
-                            });
-                            $("#levelProgressBar").animate({ "top": "-40px" }, 500, function () {
-                                $("#levelProgressBarbg").hide();
-                                currentQuestCtr++;
-                                createGameElemnts();
-                            })
+                        });
+                        $("#levelProgressBar").animate({ "top": "-40px" }, 500, function () {
+                            $("#levelProgressBarbg").hide();
+                            currentQuestCtr++;
+                            createGameElemnts();
+                        })
 
-                        }, 500)
+                    }, 500)
 
-                    }
-                    // $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
-                    if (prevLevel == 1) {
-                        $("#levelProgressBar").css("width", (2.05 * levelBarCtr) + "px");
-                    }
-                    if (prevLevel == 2) {
-                        $("#levelProgressBar").css("width", (96 + (2.05 * levelBarCtr)) + "px");
-                    }
-                    if (prevLevel == 3) {
-                        $("#levelProgressBar").css("width", ((96 * 2) + (2.05 * levelBarCtr)) + "px");
-                    }
-                    if (prevLevel == 4) {
-                        $("#levelProgressBar").css("width", ((96 * 3) + (2.05 * levelBarCtr)) + "px");
-                    }
-                    if (prevLevel == 5) {
-                        $("#levelProgressBar").css("width", ((96 * 4) + (2.05 * levelBarCtr)) + "px");
-                    }
-                    if (prevLevel == 6) {
-                        $("#levelProgressBar").css("width", ((96 * 5) + (2.05 * levelBarCtr)) + "px");
-                    }
-                    if (prevLevel == 7) {
-                        $("#levelProgressBar").css("width", ((96 * 6) + (2.05 * levelBarCtr)) + "px");
-                    }
+                }
+                // $("#levelProgressBar").css("width", (1.93 * levelBarCtr) + "px");
+                if (prevLevel == 1) {
+                    $("#levelProgressBar").css("width", (2.05 * levelBarCtr) + "px");
+                }
+                if (prevLevel == 2) {
+                    $("#levelProgressBar").css("width", (96 + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 3) {
+                    $("#levelProgressBar").css("width", ((96 * 2) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 4) {
+                    $("#levelProgressBar").css("width", ((96 * 3) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 5) {
+                    $("#levelProgressBar").css("width", ((96 * 4) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 6) {
+                    $("#levelProgressBar").css("width", ((96 * 5) + (2.05 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 7) {
+                    $("#levelProgressBar").css("width", ((96 * 6) + (2.05 * levelBarCtr)) + "px");
+                }
 
-                }, 3);
-            });
+            }, 3);
+        });
 
-            if (currentQuestCtr == (gamedata["gamedataQues"].length - 1)) {
-                setTimeout(function () {
-                    showGameEndScreen();
-                }, 1900)
-            }
+        if (currentQuestCtr == (gamedata["gamedataQues"].length - 1)) {
+            setTimeout(function () {
+                showGameEndScreen();
+            }, 3000)
+        }
     }
 
     $('#replayBtn').bind('click', function () {
@@ -406,7 +409,7 @@ $(document).ready(function () {
         tryagainoptionaudio2.play();
     }
 
-    function playpartsaudio(myaudio){
+    function playpartsaudio(myaudio) {
         var myplaypartsaudio = document.createElement("audio");
         myplaypartsaudio.src = "media/audio/" + myaudio + ".mp3";
         myplaypartsaudio.play();
