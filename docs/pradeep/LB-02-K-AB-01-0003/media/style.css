@@ -4,7 +4,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    background-color: #ffdce9;
 }
 
 main {
@@ -176,6 +177,7 @@ body {
 }
 
 #wrapper {
+    position: absolute;
     width: 1920px;
     height: 1080px;
     color: #fff;
@@ -183,8 +185,8 @@ body {
 #game_container {
     position: absolute;
     /* background-image: url('../media/assets/LB-02-K-AB-01-0001.svg'); */
-    background-image: url('../media/assets/background_1.png');
-    background-size: cover;
+    /* background-image: url('../media/assets/background_1.png');
+    background-size: cover; */
     width: 1920px;
     height: 1080px;
     -webkit-touch-callout: none;
@@ -201,6 +203,78 @@ body {
     /* Non-prefixed version, currently
 supported by Chrome, Opera and Firefox */
     display: none;
+}
+
+div#wrapper::before {
+    /* content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 4320px;
+    height: 2430px; */
+    
+}
+
+.background_1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_1.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_2::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_2.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_3::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_3.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_4::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_4.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_5::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_5.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
 }
 
 #gameplayanim {
@@ -1332,7 +1406,7 @@ supported by Chrome, Opera and Firefox */
     position: absolute;
     width: 1920px;
     height: 1080px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     opacity: 0;
     display: none;
 }

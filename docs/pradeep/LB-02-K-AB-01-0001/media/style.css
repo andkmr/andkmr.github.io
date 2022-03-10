@@ -4,7 +4,8 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
+    /* background-color: #ffdce9; */
 }
 
 main {
@@ -202,6 +203,80 @@ body {
 supported by Chrome, Opera and Firefox */
     display: none;
 }
+
+div#wrapper::before {
+    /* content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 4320px;
+    height: 2430px; */
+    
+}
+
+.background_1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_1_1.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_2::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_1_1.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_3::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_1_1.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_4::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_4_4.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_5::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_5_5.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+
+
 
 /* 1st Quest */
 #hand_outline{
@@ -561,7 +636,7 @@ supported by Chrome, Opera and Firefox */
 }
 #eyes_shadow2{
     position:absolute;
-    width: 231px;
+    width: 255px;
     height: 72px;
     background-image: url('../media/assets/eyes_shadow.png');
     background-size: cover;
@@ -827,7 +902,7 @@ supported by Chrome, Opera and Firefox */
     position: absolute;
     width: 1920px;
     height: 1080px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     opacity: 0;
     display: none;
 }

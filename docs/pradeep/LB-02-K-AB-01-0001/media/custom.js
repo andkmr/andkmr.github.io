@@ -69,6 +69,23 @@ $(document).ready(function () {
         $("#game_container").html("");
 
         // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
+
+        if(currentQuestCtr ==0){
+            $("#wrapper").addClass("background_1");
+        }
+        if(currentQuestCtr ==1){
+            $("#wrapper").removeClass("background_1").addClass("background_2");
+        }
+        if(currentQuestCtr ==2){
+            $("#wrapper").removeClass("background_2").addClass("background_3");
+        }
+        if(currentQuestCtr ==3){
+            $("#wrapper").removeClass("background_3").addClass("background_4");
+        }
+        if(currentQuestCtr ==4){
+            $("#wrapper").removeClass("background_4").addClass("background_5");
+        }
+
         var myimageUrl = "media/assets/" + gamedata["gamedataQues"][currentQuestCtr]["bg"];
         $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
 
@@ -173,6 +190,7 @@ $(document).ready(function () {
                         // console.log($(this).attr("id").split('_')[0] + "---" + currentDragId.split('_')[0]);
 
                         if ($(this).attr("id").split('_')[0] == currentDragId.split('_')[0]) {
+                            playpartsaudio($(this).attr("id").split('_')[0]);
                             $(this).droppable("disable");
                             $("#" + currentDragId).hide();
 
@@ -183,7 +201,11 @@ $(document).ready(function () {
                             mycorrectaudio();
                             foundElementCtr++;
                             if (currentQuesTotalElm == foundElementCtr) {
-                                levelprogressbar();
+                              
+                                setTimeout(function () {
+                                    levelprogressbar();
+                                }, 500)
+                                
                             }
 
                             $("#" + currentDragId).animate({ top: parseFloat($("#" + currentDragId).attr('original-top')), left: parseFloat($("#" + currentDragId).attr('original-left')) }, 0, function () {
@@ -210,6 +232,7 @@ $(document).ready(function () {
     }
 
     function showGameEndScreen() {
+        $("#wrapper").removeClass("background_5");
         endScreeAudioFn();
         proudofYouAudioFn();
         $("#endScreen").show();
@@ -383,7 +406,11 @@ $(document).ready(function () {
         tryagainoptionaudio2.play();
     }
 
-
+    function playpartsaudio(myaudio){
+        var myplaypartsaudio = document.createElement("audio");
+        myplaypartsaudio.src = "media/audio/" + myaudio + ".mp3";
+        myplaypartsaudio.play();
+    }
 
 
 });

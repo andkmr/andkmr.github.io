@@ -29,6 +29,8 @@ $(document).ready(function () {
     var currentDragId, prevdragId;
     gamePlayAnimation();
 
+    
+
     function gamePlayAnimation() {
         $("<div/>", {
             'id': "gameplayanim",
@@ -113,6 +115,7 @@ $(document).ready(function () {
     });
     $('#teenamdpi').bind('click', function () {
         // $('#teenamdpi').css("z-index", 0);
+
         playbgm();
         letbeginaudio();
         clearTimeout(quesPopupTimer);
@@ -123,7 +126,16 @@ $(document).ready(function () {
 
     // function for createTabActivity
     function createTabActivity() {
-
+        if(tabActQueCtr ==0){
+            $("#wrapper").removeClass("background_1").addClass("background_2");
+        }
+        if(tabActQueCtr ==1){
+            $("#wrapper").removeClass("background_2").addClass("background_3");
+        }
+        if(tabActQueCtr ==2){
+            $("#wrapper").removeClass("background_3").addClass("background_4");
+        }
+        
         $("#game_container").html("");
 
         // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
@@ -152,14 +164,19 @@ $(document).ready(function () {
                     tabCorrectCtr++;
                     $(this).addClass("correctAns");
                     if (currentTabTotalQue == tabActArrQueCtr || tabCorrectCtr == (gamedata["tabactivity"][tabActQueCtr]["totalCorrect"])) {
-                        nextTabActivity()
+                        setTimeout(function () {
+                            nextTabActivity();
+                        }, 1000)
+                        
                     }
                 } else {
                     wrongAttempCtr++;
                     playwrongtabaudio(gamedata["tabactivity"][tabActQueCtr]["wrong_mascot_audio"]);
                     $(this).addClass("wrongAns");
                     if (currentTabTotalQue == tabActArrQueCtr) {
-                        nextTabActivity();
+                        setTimeout(function () {
+                            nextTabActivity();
+                        }, 1000)
                     }
                 }
 
@@ -176,6 +193,8 @@ $(document).ready(function () {
         tabActArrQueCtr = 0;
         tabCorrectCtr = 0;
         levelprogressbar();
+        
+        
     }
     // function for createGameElemnts
     function createGameElemnts() {
@@ -183,8 +202,11 @@ $(document).ready(function () {
         $("#game_container").html("");
 
         // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
+        
+        $("#wrapper").removeClass("background_4").addClass("background_5");
+
         var myimageUrl = "media/assets/" + gamedata["gamedataQues"][currentQuestCtr]["bg"];
-        $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
+        $("#game_container").css('background-image', 'url(none)');
 
         for (var i = 0; i < gamedata["gamedataQues"][currentQuestCtr]["dragItems"].length; i++) {
             $("<div/>", {
@@ -324,6 +346,7 @@ $(document).ready(function () {
     }
 
     function showGameEndScreen() {
+        $("#wrapper").removeClass("background_5");
         endScreeAudioFn();
         proudofYouAudioFn();
         $("#endScreen").show();
