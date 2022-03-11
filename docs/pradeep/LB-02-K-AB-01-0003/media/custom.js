@@ -197,6 +197,7 @@ $(document).ready(function () {
         
     }
     // function for createGameElemnts
+ 
     function createGameElemnts() {
 
         $("#game_container").html("");
@@ -208,7 +209,13 @@ $(document).ready(function () {
         var myimageUrl = "media/assets/" + gamedata["gamedataQues"][currentQuestCtr]["bg"];
         $("#game_container").css('background-image', 'url(none)');
 
+        
         for (var i = 0; i < gamedata["gamedataQues"][currentQuestCtr]["dragItems"].length; i++) {
+
+            $("<div/>", {
+                'id': 'drop'+(i+1)
+            }).appendTo('#game_container');
+
             $("<div/>", {
                 'id': gamedata["gamedataQues"][currentQuestCtr]["dragItems"][i],
                 'class': gamedata["gamedataQues"][currentQuestCtr]["drag_type"]

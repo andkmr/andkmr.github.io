@@ -519,7 +519,7 @@ div#wrapper::before {
     height: 302px;
     background-image: url('../media/assets/boy_eating_icecream.png');
     background-size: cover;
-    left: 405px;
+    left: 375px;
     top: 317px;
     cursor: pointer;
     opacity: 0.01;
@@ -530,7 +530,7 @@ div#wrapper::before {
     height: 271px;
     background-image: url('../media/assets/boy_playing_with_toys.png');
     background-size: cover;
-    left: 836px;
+    left: 856px;
     top: 317px;
     cursor: pointer;
     opacity: 0.01;
@@ -541,7 +541,7 @@ div#wrapper::before {
     height: 287px;
     background-image: url('../media/assets/boy_reading.png');
     background-size: cover;
-    left: 1325px;
+    left: 1365px;
     top: 317px;
     cursor: pointer;
     opacity: 0.01;
@@ -586,7 +586,7 @@ div#wrapper::before {
     background-image: url('../media/assets/boycooking.png');
     background-size: cover;
     left: 405px;
-    top: 317px;
+    top: 267px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -596,8 +596,8 @@ div#wrapper::before {
     height: 218px;
     background-image: url('../media/assets/girlsleeping.png');
     background-size: cover;
-    left: 836px;
-    top: 317px;
+    left: 818px;
+    top: 337px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -607,8 +607,8 @@ div#wrapper::before {
     height: 301px;
     background-image: url('../media/assets/skippinggirl.png');
     background-size: cover;
-    left: 1325px;
-    top: 317px;
+    left: 1365px;
+    top: 287px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -652,8 +652,8 @@ div#wrapper::before {
     height: 318px;
     background-image: url('../media/assets/boyjumping.png');
     background-size: cover;
-    left: 405px;
-    top: 317px;
+    left: 375px;
+    top: 307px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -663,8 +663,8 @@ div#wrapper::before {
     height: 294px;
     background-image: url('../media/assets/girlhopping.png');
     background-size: cover;
-    left: 836px;
-    top: 317px;
+    left: 866px;
+    top: 307px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -674,8 +674,8 @@ div#wrapper::before {
     height: 306px;
     background-image: url('../media/assets/gilonslide.png');
     background-size: cover;
-    left: 1325px;
-    top: 317px;
+    left: 1285px;
+    top: 297px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -720,8 +720,8 @@ div#wrapper::before {
     height: 295px;
     background-image: url('../media/assets/swinginggirl.png');
     background-size: cover;
-    left: 405px;
-    top: 317px;
+    left: 375px;
+    top: 307px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -731,8 +731,8 @@ div#wrapper::before {
     height: 323px;
     background-image: url('../media/assets/girlwithfamily.png');
     background-size: cover;
-    left: 836px;
-    top: 317px;
+    left: 754px;
+    top: 277px;
     cursor: pointer;
     opacity: 0.01;
 }
@@ -742,7 +742,7 @@ div#wrapper::before {
     height: 263px;
     background-image: url('../media/assets/girlswiming.png');
     background-size: cover;
-    left: 1325px;
+    left: 1297px;
     top: 317px;
     cursor: pointer;
     opacity: 0.01;
@@ -1401,7 +1401,33 @@ div#wrapper::before {
     cursor: pointer;
     z-index: 2;
 }
-
+#drop1{
+    position: absolute;
+    width: 420px;
+    height: 380px;
+    background-color: #eddcff;
+    top: 260px;
+    left: 280px;
+    border-radius: 30px;
+}
+#drop2{
+    position: absolute;
+    width: 420px;
+    height: 380px;
+    background-color: #eddcff;
+    top: 260px;
+    left: 759px;
+    border-radius: 30px;
+}
+#drop3{
+    position: absolute;
+    width: 420px;
+    height: 380px;
+    background-color: #eddcff;
+    top: 260px;
+    left: 1240px;
+    border-radius: 30px;
+}
 #levelProgressBarbg{
     position: absolute;
     width: 1920px;
