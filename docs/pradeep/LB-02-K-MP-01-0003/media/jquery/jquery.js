@@ -3271,10 +3271,9 @@ function scaleStage() {
         '-ms-transform-origin': 'left top',
         '-o-transform-origin': 'left top',
         'transform-origin': 'left top',
-        'position': 'absolute',
+        'position': 'fixed',
         'top': '0px',
         'left': leftPos + 'px',
-        'overflow': 'hidden',
         'width': config['stageWidth'] + 'px',
         'height': config['stageHeight'] + 'px'
     };

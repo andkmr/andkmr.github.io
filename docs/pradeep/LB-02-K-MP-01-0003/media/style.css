@@ -180,10 +180,134 @@ body {
     height: 1080px;
     color: #fff;
 }
+.wrapper::before {
+
+}
+.background_1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_1.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_2.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_3.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_4.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_5::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_5.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_6::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_6.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_7::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_7.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_8::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_8.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_9::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_9.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_10::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url(../media/assets/background_10.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+
+
 #game_container {
     position: absolute;
-    /* background-image: url('../media/assets/LB-02-K-AB-01-0001.svg'); */
-    background-image: url('../media/assets/background_1.png');
+    /* background-image: url('../media/assets/background_1.png'); */
     background-size: cover;
     width: 1920px;
     height: 1080px;
@@ -226,9 +350,8 @@ supported by Chrome, Opera and Firefox */
 
 #parrot{
     position:absolute;
-    width: 271px;
-    height: 396px;
-    background-image: url('../media/assets/parrot.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
     left: 325px;
     top: 77px;
@@ -237,20 +360,18 @@ supported by Chrome, Opera and Firefox */
 
 #cat{
     position:absolute;
-    width: 310px;
-    height: 321px;
-    background-image: url('../media/assets/cat.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
-    left: 864px;
-    top: 77px;
+    left: 794px;
+    top: 27px;
     cursor: pointer;
 }
 
 #tortoise{
     position:absolute;
-    width: 466px;
-    height: 289px;
-    background-image: url('../media/assets/tortoise.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
     left: 1395px;
     top: 77px;
@@ -259,20 +380,18 @@ supported by Chrome, Opera and Firefox */
 
 #dog{
     position:absolute;
-    width: 308px;
-    height: 386px;
-    background-image: url('../media/assets/dog.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
-    left: 585px;
+    left: 485px;
     top: 577px;
     cursor: pointer;
 }
 
 #rabbit{
     position:absolute;
-    width: 297px;
-    height: 415px;
-    background-image: url('../media/assets/rabbit.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
     left: 55px;
     top: 577px;
@@ -280,27 +399,18 @@ supported by Chrome, Opera and Firefox */
 }
 #fish{
     position:absolute;
-    width: 327px;
-    height: 287px;
-    background-image: url('../media/assets/fish.png');
+    width: 500px;
+    height: 500px;
     background-size: cover;
-    left: 1124px;
+    left: 1054px;
     top: 577px;
     cursor: pointer;
 }
 
-#centerImageDiv{
-    position: absolute;
-    width: 930px;
-    height: 801px;
-    background-size: cover;
-    left: 474px;
-    top: 147px;
-    cursor: pointer;
-    background-color: #ffdce9;
-    border-radius: 60px;
-    display: none;
+.divshow{
+    display: block !important;
 }
+
 .correctAns{
     /* border: 7px solid red;
     border-radius: 220px; */
@@ -495,11 +605,11 @@ supported by Chrome, Opera and Firefox */
 #rabbit_3{
     position:absolute;
     width: 248px;
-    height: 332px;
+    height: 482px;
     background-image: url('../media/assets/rabbit_3.png');
     background-size: cover;
     left: 864px;
-    top: 77px;
+    top: 7px;
     cursor: pointer;
 }
 #fish_3{
@@ -581,7 +691,80 @@ supported by Chrome, Opera and Firefox */
 } 
 
 
+/* ,,,,,, */
+#tortoise_5{
+    position:absolute;
+    width: 379px;
+    height: 325px;
+    background-image: url('../media/assets/tortoise_1.png');
+    background-size: cover;
+    left: 55px;
+    top: 597px;
+    cursor: pointer;
+}
+#dog_5{
+    position:absolute;
+    width: 308px;
+    height: 386px;
+    background-image: url('../media/assets/dog.png');
+    background-size: cover;
+    left: 1124px;
+    top: 577px;
+    cursor: pointer;
+}
+#cat_5{
+    position:absolute;
+    width: 310px;
+    height: 321px;
+    background-image: url('../media/assets/cat.png');
+    background-size: cover;
+    left: 1395px;
+    top: 77px;
+    cursor: pointer;
+    opacity: 0.1;
+}
 
+#fish_5{
+    position:absolute;
+    width: 308px;
+    height: 298px;
+    background-image: url('../media/assets/fish_4.png');
+    background-size: cover;
+    left: 325px;
+    top: 127px;
+    cursor: pointer;
+} 
+#rabbit_5{
+    position:absolute;
+    width: 181px;
+    height: 432px;
+    background-image: url('../media/assets/rabbit_2.png');
+    background-size: cover;
+    left: 864px;
+    top: 77px;
+    cursor: pointer;
+}
+
+#parrot_5{
+    position:absolute;
+    width: 302px;
+    height: 395px;
+    background-image: url('../media/assets/parrot_2.png');
+    background-size: cover;
+    left: 585px;
+    top: 577px;
+    cursor: pointer;
+}
+#tortoise_6{
+    position:absolute;
+    width: 319px;
+    height: 217px;
+    background-image: url('../media/assets/tortoise_3.png');
+    background-size: cover;
+    left: 55px;
+    top: 597px;
+    cursor: pointer;
+}
 
 
 
@@ -1617,7 +1800,7 @@ supported by Chrome, Opera and Firefox */
     position: absolute;
     width: 1920px;
     height: 1080px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     opacity: 0;
     display: none;
 }

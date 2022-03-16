@@ -77,24 +77,70 @@ $(document).ready(function () {
     // function for createTabActivity
     function createTabActivity() {
 
+
+        if (tabActQueCtr == 0) {
+            $("#wrapper").addClass("background_1");
+        }
+        if (tabActQueCtr == 1) {
+            $("#wrapper").removeClass("background_1").addClass("background_2");
+        }
+        if (tabActQueCtr == 2) {
+            $("#wrapper").removeClass("background_2").addClass("background_3");
+        }
+        if (tabActQueCtr == 3) {
+            $("#wrapper").removeClass("background_3").addClass("background_4");
+        }
+        if (tabActQueCtr == 4) {
+            $("#wrapper").removeClass("background_4").addClass("background_5");
+        }
+        if (tabActQueCtr == 5) {
+            $("#wrapper").removeClass("background_5").addClass("background_6");
+        }
+        if (tabActQueCtr == 6) {
+            $("#wrapper").removeClass("background_6").addClass("background_7");
+        }
+        if (tabActQueCtr == 7) {
+            $("#wrapper").removeClass("background_7").addClass("background_8");
+        }
+        if (tabActQueCtr == 8) {
+            $("#wrapper").removeClass("background_8").addClass("background_9");
+        }
+        if (tabActQueCtr == 9) {
+            $("#wrapper").removeClass("background_9").addClass("background_10");
+        }
+
+
+
         $("#game_container").html("");
 
         // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
 
-        try {
-            var myimageUrl = "media/assets/" + gamedata["tabactivity"][tabActQueCtr]["bg"];
-            $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
-        } catch (error) {
+        // try {
+        //     var myimageUrl = "media/assets/" + gamedata["tabactivity"][tabActQueCtr]["bg"];
+        //     $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
+        // } catch (error) {
 
-        }
+        // }
 
         currentTabTotalQue = gamedata["tabactivity"][tabActQueCtr]["tabItems"].length;
 
         for (var i = 0; i < gamedata["tabactivity"][tabActQueCtr]["tabItems"].length; i++) {
-            $("<div/>", {
-                'id': gamedata["tabactivity"][tabActQueCtr]["tabItems"][i],
-                'num': gamedata["tabactivity"][tabActQueCtr]["tabItemsHabbites"][i]
-            }).appendTo('#game_container');
+            if(tabActQueCtr == 0){
+                $("<lottie-player/>", {
+                    'id': gamedata["tabactivity"][tabActQueCtr]["tabItems"][i],
+                    "src": "media/assets/" + gamedata["tabactivity"][tabActQueCtr]["tabItems"][i]+".json",
+                    'num': gamedata["tabactivity"][tabActQueCtr]["tabItemsHabbites"][i], 
+                    'autoplay': true,
+                    'loop': true
+                    
+                }).appendTo('#game_container');
+            }else{
+                $("<div/>", {
+                    'id': gamedata["tabactivity"][tabActQueCtr]["tabItems"][i],
+                    'num': gamedata["tabactivity"][tabActQueCtr]["tabItemsHabbites"][i]
+                }).appendTo('#game_container');
+            }
+            
 
             $('#' + gamedata["tabactivity"][tabActQueCtr]["tabItems"][i]).bind('click', function () {
                 tabActArrQueCtr++;
@@ -104,16 +150,13 @@ $(document).ready(function () {
                     playtabaudio($(this).attr("id"));
                     tabCorrectCtr++;
                     $(this).addClass("correctAns");
-                    $("#centerImageDiv").show();
-
-                    // var img = $('<img id="dynamic">');
-                    // img.attr('src', 'media/assets/' + $(this).attr("id") + '.png');
-                    // img.appendTo('#centerImageDiv');
-
-                    $("#centerImageDiv").css('background-image', 'url(media/assets/' + $(this).attr("id") + '.png)');
-                    $("#centerImageDiv").removeClass('animated zoomIn').addClass('animated zoomIn');
+                    console.log($(this).attr("id"));
+                    $("."+$(this).attr("id")).addClass("divshow");
+                    $(this).hide();
+                    // $("."+$(this).attr("id")).attr("src",'media/assets/' + $(this).attr("id") + '.json');
+                    $("."+$(this).attr("id")).removeClass('animated zoomIn').addClass('animated zoomIn');
                     if (tabCorrectCtr == (gamedata["tabactivity"][tabActQueCtr]["totalCorrect"])) {
-                        nextTabActivity()
+                        nextTabActivity();
                     }
                 } else {
                     wrongAttempCtr++;
@@ -139,6 +182,19 @@ $(document).ready(function () {
             tabActArrQueCtr = 0;
             tabCorrectCtr = 0;
             levelprogressbar();
+            $(".fish").removeClass("divshow");
+            $(".parrot_1").removeClass("divshow");
+            $(".cat_2").removeClass("divshow");
+            $(".dog_3").removeClass("divshow");
+            $(".rabbit_4").removeClass("divshow");
+            $(".tortoise_5").removeClass("divshow");
+            $(".dog_5").removeClass("divshow");
+            $(".cat_5").removeClass("divshow");
+            $(".fish_5").removeClass("divshow");
+            $(".rabbit_5").removeClass("divshow");
+            $(".parrot_5").removeClass("divshow");
+            $(".tortoise_6").removeClass("divshow");
+            
         }, 2300)
     }
     // function for createGameElemnts
@@ -146,9 +202,8 @@ $(document).ready(function () {
 
         $("#game_container").html("");
 
-        // console.log(gamedata["gamedataQues"][currentQuestCtr]["bg"]);
-        var myimageUrl = "media/assets/" + gamedata["gamedataQues"][currentQuestCtr]["bg"];
-        $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
+        // var myimageUrl = "media/assets/" + gamedata["gamedataQues"][currentQuestCtr]["bg"];
+        // $("#game_container").css('background-image', 'url(' + myimageUrl + ')');
 
         for (var i = 0; i < gamedata["gamedataQues"][currentQuestCtr]["dragItems"].length; i++) {
             $("<div/>", {
@@ -231,7 +286,7 @@ $(document).ready(function () {
         $("#levelProgressBar").animate({ "top": "40px" }, 500, function () {
             var mybar = setInterval(function () {
                 levelBarCtr++;
-                if (levelBarCtr == 40) {
+                if (levelBarCtr == 20) {
                     clearInterval(mybar);
                     setTimeout(function () {
                         // tabActivityStatus = false;
@@ -252,22 +307,37 @@ $(document).ready(function () {
                     $("#levelProgressBar").css("width", (1.71 * levelBarCtr) + "px");
                 }
                 if (prevLevel == 2) {
-                    $("#levelProgressBar").css("width", (68.4 + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", (40.4 + (1.71 * levelBarCtr)) + "px");
                 }
                 if (prevLevel == 3) {
-                    $("#levelProgressBar").css("width", ((68.4 * 2) + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", ((40.4 * 2) + (1.71 * levelBarCtr)) + "px");
                 }
                 if (prevLevel == 4) {
-                    $("#levelProgressBar").css("width", ((68.4 * 3) + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", ((40.4 * 3) + (1.71 * levelBarCtr)) + "px");
                 }
                 if (prevLevel == 5) {
-                    $("#levelProgressBar").css("width", ((68.4 * 4) + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", ((40.4 * 4) + (1.71 * levelBarCtr)) + "px");
                 }
                 if (prevLevel == 6) {
-                    $("#levelProgressBar").css("width", ((68.4 * 5) + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", ((40.4 * 5) + (1.71 * levelBarCtr)) + "px");
                 }
                 if (prevLevel == 7) {
-                    $("#levelProgressBar").css("width", ((68.4 * 6) + (1.71 * levelBarCtr)) + "px");
+                    $("#levelProgressBar").css("width", ((40.4 * 6) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 8) {
+                    $("#levelProgressBar").css("width", ((40.4 * 7) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 9) {
+                    $("#levelProgressBar").css("width", ((40.4 * 8) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 10) {
+                    $("#levelProgressBar").css("width", ((40.4 * 9) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 11) {
+                    $("#levelProgressBar").css("width", ((40.4 * 10) + (1.71 * levelBarCtr)) + "px");
+                }
+                if (prevLevel == 12) {
+                    $("#levelProgressBar").css("width", ((40.4 * 11) + (1.71 * levelBarCtr)) + "px");
                 }
 
                 // console.log(levelBarCtr);
