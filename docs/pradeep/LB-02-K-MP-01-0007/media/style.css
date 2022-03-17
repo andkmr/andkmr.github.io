@@ -1,0 +1,893 @@
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0;
+    background-color: #ffdce9;
+}
+
+main {
+    display: block
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible
+}
+
+pre {
+    font-size: 1em
+}
+
+a {
+    background-color: transparent
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted
+}
+
+b, strong {
+    font-weight: bolder
+}
+
+code, kbd, samp {
+    font-size: 1em
+}
+
+small {
+    font-size: 80%
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+img {
+    border-style: none
+}
+
+button, input, optgroup, select, textarea {
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0
+}
+
+button, input {
+    overflow: visible
+}
+
+button, select {
+    text-transform: none
+}
+
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button
+}
+
+[type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+    border-style: none;
+    padding: 0
+}
+
+[type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
+    outline: 1px dotted ButtonText
+}
+
+fieldset {
+    padding: .35em .75em .625em
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal
+}
+
+progress {
+    vertical-align: baseline
+}
+
+textarea {
+    overflow: auto
+}
+
+[type=checkbox], [type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+[type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px
+}
+
+[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit
+}
+
+details {
+    display: block
+}
+
+summary {
+    display: list-item
+}
+
+template {
+    display: none
+}
+
+[hidden] {
+    display: none
+}
+
+@font-face {
+    font-family:'BreeSerif-Regular';
+    src: url('fonts/BreeSerif-Regular.eot');
+	src: url('fonts/BreeSerif-Regular.eot?#iefix') format('embedded-opentype'),		
+	url('fonts/BreeSerif-Regular.woff') format('woff'),
+	url('fonts/BreeSerif-Regular.woff2') format('woff2'),
+	url('fonts/BreeSerif-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#outerBox {
+    width: 115px;
+    height: 115px;
+    border-color: yellow;
+}
+
+body {
+    font-family:'BreeSerif-Regular'
+}
+
+#wrapper {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    color: #fff;
+}
+#game_container {
+    position: absolute;
+    /* background-image: url('../media/assets/LB-02-K-AB-01-0001.svg'); */
+    /* background-image: url('../media/assets/background_1.png');
+    background-size: cover; */
+    width: 1920px;
+    height: 1080px;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+supported by Chrome, Opera and Firefox */
+    display: none;
+    background-size: cover;
+}
+
+div#wrapper::before {
+    /* content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 4320px;
+    height: 2430px; */
+    
+}
+
+.background_1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_1.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_2::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_2.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_3::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_3.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_4::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_4.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_5::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_5.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+.background_6::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2880px;
+    height: 1620px;
+    background-image: url('../media/assets/background_6.png');
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+
+
+/* css for tab items */
+
+
+#mydropbg0{
+    position: absolute;
+    background-size: cover;
+    width: 247px;
+    height: 247px;
+    left: 1641px;
+    top: 39px;
+}
+#mydropbg1{
+    position: absolute;
+    background-size: cover;
+    width: 247px;
+    height: 247px;
+    left: 1640px;
+    top: 273px;
+}
+#mydropbg2{
+    position: absolute;
+    background-size: cover;
+    width: 247px;
+    height: 247px;
+    left: 1640px;
+    top: 510px;
+}
+
+
+
+#dropbg0{
+    position: absolute;
+    background-size: cover;
+    width: 347px;
+    height: 347px;
+    left: 1540px;
+    top: 30px;
+}
+#dropbg1{
+    position: absolute;
+    background-size: cover;
+    width: 347px;
+    height: 347px;
+    left: 1540px;
+    top: 390px;
+}
+
+#dog{
+    position:absolute;
+    width: 199px;
+    height: 285px;
+    background-image: url('../media/assets/dog.png');
+    background-size: cover;
+    left: 1626px;
+    top: 56px;
+    cursor: pointer;
+}
+#doglegs{
+    position:absolute;
+    width: 298px;
+    height: 314px;
+    background-image: url('../media/assets/doglegs.png');
+    background-size: cover;
+    left: 715px;
+    top: 531px;
+}
+#parrot{
+    position:absolute;
+    width: 223px;
+    height: 322px;
+    background-image: url('../media/assets/parrot.png');
+    background-size: cover;
+    left: 1606px;
+    top: 416px;
+    cursor: pointer;
+}
+.dog{
+    position:absolute;
+    width: 430px !important;
+    height: 625px !important;
+    background-image: url('../media/assets/dog.png') !important;
+    left: 745px !important;
+    top: 223px !important;
+}
+
+
+
+
+#beak{
+    position:absolute;
+    width: 124px;
+    height: 130px;
+    background-image: url('../media/assets/beak.png');
+    background-size: cover;
+    left: 845px;
+    top: 426px;
+}
+#cat{
+    position:absolute;
+    width: 228px;
+    height: 236px;
+    background-image: url('../media/assets/cat.png');
+    background-size: cover;
+    left: 1606px;
+    top: 76px;
+    cursor: pointer;
+}
+#parrot2{
+    position:absolute;
+    width: 293px;
+    height: 241px;
+    background-image: url('../media/assets/parrot2.png');
+    background-size: cover;
+    left: 1560px;
+    top: 436px;
+    cursor: pointer;
+}
+.parrot2{
+    position:absolute;
+    width: 930px !important;
+    height: 755px !important;
+    background-image: url('../media/assets/parrot2.png') !important;
+    left: 445px !important;
+    top: 63px !important;
+}
+
+
+#fins{
+    position:absolute;
+    width: 507px;
+    height: 621px;
+    background-image: url('../media/assets/fins.png');
+    background-size: cover;
+    left: 737px;
+    top: 256px;
+}
+#rabbit{
+    position:absolute;
+    width: 212px;
+    height: 284px;
+    background-image: url('../media/assets/rabbit.png');
+    background-size: cover;
+    left: 1606px;
+    top: 46px;
+    cursor: pointer;
+}
+#fishblue{
+    position:absolute;
+    width: 279px;
+    height: 221px;
+    background-image: url('../media/assets/fishblue.png');
+    background-size: cover;
+    left: 1569px;
+    top: 436px;
+    cursor: pointer;
+}
+.fishblue{
+    position:absolute;
+    width: 954px !important;
+    height: 755px !important;
+    background-image: url('../media/assets/fishblue.png') !important;
+    left: 305px !important;
+    top: 203px !important;
+}
+
+
+#catbody{
+    position:absolute;
+    width: 429px;
+    height: 798px;
+    background-image: url('../media/assets/catbody.png');
+    background-size: cover;
+    left: 577px;
+    top: 187px;
+}
+#fishyellow{
+    position:absolute;
+    width: 279px;
+    height: 242px;
+    background-image: url('../media/assets/fishyellow.png');
+    background-size: cover;
+    left: 1568px;
+    top: 66px;
+    cursor: pointer;
+}
+#cat2{
+    position:absolute;
+    width: 189px;
+    height: 309px;
+    background-image: url('../media/assets/cat2.png');
+    background-size: cover;
+    left: 1589px;
+    top: 416px;
+    cursor: pointer;
+}
+.cat2{
+    position:absolute;
+    width: 524px !important;
+    height: 825px !important;
+    background-image: url('../media/assets/cat2.png') !important;
+    left: 636px !important;
+    top: 123px !important;
+}
+
+
+
+#rabbitears{
+    position:absolute;
+    width: 417px;
+    height: 396px;
+    background-image: url('../media/assets/rabbitears.png');
+    background-size: cover;
+    left: 687px;
+    top: 307px;
+}
+#mycat{
+    position:absolute;
+    width: 139px;
+    height: 219px;
+    background-image: url('../media/assets/cat2.png');
+    background-size: cover;
+    left: 1671px;
+    top: 50px;
+    cursor: pointer;
+}
+#myfish{
+    position:absolute;
+    width: 179px;
+    height: 152px;
+    background-image: url('../media/assets/fishyellow.png');
+    background-size: cover;
+    left: 1679px;
+    top: 305px;
+    cursor: pointer;
+}
+#myrabit{
+    position:absolute;
+    width: 142px;
+    height: 194px;
+    background-image: url('../media/assets/rabbit.png');
+    background-size: cover;
+    left: 1689px;
+    top: 535px;
+    cursor: pointer;
+}
+.myrabit{
+    position:absolute;
+    width: 600px !important;
+    height: 806px !important;
+    background-image: url('../media/assets/rabbit.png') !important;
+    left: 686px !important;
+    top: 213px !important;
+}
+
+
+
+
+
+
+
+
+
+
+#turtlehead{
+    position:absolute;
+    width: 365px;
+    height: 383px;
+    background-image: url('../media/assets/turtlehead.png');
+    background-size: cover;
+    left: 487px;
+    top: 267px;
+}
+#lastdog{
+    position:absolute;
+    width: 135px;
+    height: 195px;
+    background-image: url('../media/assets/dog.png');
+    background-size: cover;
+    left: 1701px;
+    top: 60px;
+    cursor: pointer;
+}
+#lastturtle{
+    position:absolute;
+    width: 249px;
+    height: 168px;
+    background-image: url('../media/assets/turtle.png');
+    background-size: cover;
+    left: 1626px;
+    top: 315px;
+    cursor: pointer;
+}
+#lastfish{
+    position:absolute;
+    width: 189px;
+    height: 150px;
+    background-image: url('../media/assets/fishblue.png');
+    background-size: cover;
+    left: 1666px;
+    top: 546px;
+    cursor: pointer;
+}
+.lastturtle{
+    position:absolute;
+    width: 979px !important;
+    height: 538px !important;
+    background-image: url('../media/assets/turtle.png') !important;
+    left: 416px !important;
+    top: 180px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#teenabuttonmdpi{
+    position:absolute;
+    width: 270px;
+    height: 270px;
+    background-image: url('../media/assets/ui/teenabuttonmdpi.png');
+    background-size: cover;
+    left: 4px;
+    top: 8px;
+    cursor: pointer;
+    display:none;
+}
+.teenabuttonmdpi_back{
+    background-image: url('../media/assets/ui/teenabuttonmdpi_back.png') !important;
+    background-size: cover;
+}
+#teenabuttonmdpi_slide{
+    position:absolute;
+    /* width: 336px; */
+    width: 0px;
+    height: 160px;
+    background-image: url('../media/assets/ui/highlightbutton.png');
+    background-size: cover;
+    left: 241px;
+    top: 45px;
+    cursor: pointer;
+    display: none;
+}
+#homeblack{
+    position: absolute;
+    width: 221px;
+    height: 221px;
+    background-image: url("../media/assets/ui/homeblack.png");
+    background-size: cover;
+    left: -19px;
+    top: -24px;
+    cursor: pointer;
+    opacity: 0;
+    
+}
+#castblack{
+    position:absolute;
+    width: 119px;
+    height: 131px;
+    background-image: url('../media/assets/ui/castblack.png');
+    background-size: cover;
+    left: 177px;
+    top: 15px;
+    cursor: pointer;
+    opacity: 0;
+   
+}
+
+
+#teenamdpi{
+    position:absolute;
+    width: 360px;
+    height: 360px;
+    background-image: url('../media/assets/ui/feego-mascot-button.png');
+    background-size: cover;
+    right: -4px;
+    bottom: -8px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#levelProgressBarbg{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    /* background-color: #f9f9f9; */
+    opacity: 0;
+    display: none;
+}
+#mask1stdiv{
+    background-color: #d6f3fe;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: scale(1,1);
+    /* transform-origin: 0 0; */
+    animation: leaves 3s;
+    z-index: 0;
+}
+.maskdiv{
+    background-color: #e6e6e6;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: scale(1,1);
+    /* transform-origin: 0 0; */
+    animation: leaves 3s;
+}
+
+.myzidex{
+    z-index: 1;
+}
+
+@keyframes leaves {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(30.0);
+    }
+}
+
+
+#levelProgressBarStat{
+    position: absolute;
+    width: 480px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 6px #888888a1;
+    left: 670px;
+    top: -40px;
+    z-index: 2;
+}
+#levelProgressBar{ 
+    position: absolute;
+    width: 0px;
+    height: 40px;
+    background-color: #ffdce9;
+    border-radius: 20px;
+    box-shadow: 0px 6px #888888;
+    left: 670px;
+    top: -40px;
+    z-index: 2;
+}
+#feego{
+    position: absolute;
+    width: 43px;
+    height: 57px;
+    background-image: url('../media/assets/ui/feego.png');
+    background-size: cover;
+    right: -20px;
+    top: -8px;
+}
+#prevNo{
+    position: absolute;
+    left: 41px;
+    top: 21px;
+    font-size: 60px;
+    color: white;
+    opacity: 0;
+}
+#nextNo{
+    position: absolute;
+    left: 572px;
+    top: 21px;
+    font-size: 60px;
+    color: white;
+    opacity: 0;
+}
+
+
+.stopClick{
+    pointer-events: none;
+}
+
+
+#endScreen{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    display: none;
+    /* background-image: url('../media/assets/Critical-Thinking-Game-end-reference.jpg');
+    background-size: cover; */
+    
+}
+
+#replayBtn{
+    position: absolute;
+    width: 181px;
+    height: 181px;
+    background-image: url('../media/assets/ui/replay.png');
+    background-size: cover;
+    left: 46px;
+    bottom: 44px;
+}
+#exitBtn{
+    position: absolute;
+    width: 181px;
+    height: 181px;
+    background-image: url('../media/assets/ui/exit.png');
+    background-size: cover;
+    right: 46px;
+    bottom: 44px;
+}
+
+#star1{
+    display: none;
+}
+#star2{
+    display: none;
+}
+#star3{
+    display: none;
+}
+
+
+
+#IcZoomIn{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    top: 400px;
+    left: 370px;
+}
+#IcZoomOut{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    top: 400px;
+    left: 570px;
+}
+
+
+/*-- Loader CSS Starts --*/
+#html5Loader {
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 3;
+    position: fixed;
+    background: #ffffff;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDA3NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iIzAwMDAzMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(left, #ffffff 0%, #ffffff 49%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffffff), color-stop(49%, #ffffff));
+    background: -webkit-linear-gradient(left, #ffffff 0%, #ffffff 49%);
+    background: -o-linear-gradient(left, #ffffff 0%, #ffffff 49%);
+    background: -ms-linear-gradient(left, #ffffff 0%, #ffffff 49%);
+    background: linear-gradient(to right, #ffffff 0%, #ffffff 49%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1);
+}
+
+#html5Loader .fallback {
+    top: 50%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: white;
+    /*vertical-align: middle;*/
+    /*display: block;font-style: normal;font-size:100px;*/
+}
+
+div#DvLoaderCont {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 300px;
+    height: 15px;
+    margin: auto;
+    z-index: 100;
+    overflow: hidden;
+    position: absolute;
+    background: #ffffff;
+}
+
+div#DvLoaderProgress {
+    top: 0px;
+    left: -300px;
+    width: 300px;
+    height: 15px;
+    position: absolute;
+    /* background: #0079c0; */
+}
+
+/*-- Loader CSS Ends --*/
