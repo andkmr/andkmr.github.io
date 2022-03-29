@@ -1,6 +1,6 @@
 function receiveMessageFromUnity(urlData) {
 
-   // window.open(urlData, "_self");
+   window.open(urlData, "_self");
 
 }
 
