@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, width = device-width"
+    name="viewport" />
+
+  <title>Good habits</title>
+
+  <link rel="stylesheet" type="text/css" href="media/jquery/animate.min.css" />
+  <link rel="stylesheet" type="text/css" href="media/style.css" />
+
+  <script>
+    document.addEventListener(
+      "touchmove",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
+    var lastTouchEnd = 0;
+
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        var now = new Date().getTime();
+        if (now - lastTouchEnd <= 50) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      },
+      { passive: false }
+    );
+  </script>
+</head>
+
+<body>
+  <!--Preloader-->
+  <div class="row">
+    <div id="html5Loader" class="col-sm-12">
+      <div id="DvLoaderCont">
+        <div id="DvLoaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="wrapper" class="background_1">
+
+    <div id="load_images" style="width: 0px; height: 0px; opacity: 0">
+      <img src="media/assets/background_1.png">
+      <img src="media/assets/background_2.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_4.png">
+    </div>
+
+    <div id="game_container">
+      <lottie-player id="anim2" src="https://assets7.lottiefiles.com/private_files/lf30_atlu7bie.json"
+        background="transparent" speed="1" style="display: none; width: 1920px; height: 1080px; position: absolute; z-index: 1;" loop
+        autoplay>
+      </lottie-player>
+    </div>
+    <lottie-player id="anim3" src="https://assets4.lottiefiles.com/private_files/lf30_lb9tjalp.json"
+      background="transparent" speed="1" style="display: none; width: 1920px; height: 1080px; position: absolute; z-index: 1;" loop
+      autoplay></lottie-player>
+
+    <lottie-player id="anim4" src="https://assets1.lottiefiles.com/private_files/lf30_wkm9rjqf.json" background="transparent"
+      speed="1" style="display: none; width: 1920px; height: 1080px; position: absolute; z-index: 1;" loop autoplay></lottie-player>
+
+    <lottie-player id="anim5" src="https://assets4.lottiefiles.com/private_files/lf30_oggfpeyq.json" background="transparent"
+      speed="1" style="display: none; width: 1850px; height: 1020px; position: absolute; z-index: 2; top: 42px; left: 40px;" loop autoplay></lottie-player>
+
+    <div id="hiddenShapesBox"></div>
+    <div id="levelProgressBarbg">
+
+      <div id="maskdiv"></div>
+      <div id="mask1stdiv"></div>
+      <div id="levelProgressBarStat"></div>
+      <div id="levelProgressBar">
+        <div id="feego"></div>
+        <!-- <div id="prevNo"></div>
+        <div id="nextNo"></div> -->
+      </div>
+      
+    </div>
+    <div id="teenabuttonmdpi"></div>
+    <div id="teenabuttonmdpi_slide">
+      <div id="homeblack"></div>
+      <div id="castblack"></div>
+    </div>
+    <div id="teenamdpi"></div>
+
+    <div id="endScreen">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://assets6.lottiefiles.com/private_files/lf30_9swauupx.json" background="transparent"
+        speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+
+      <lottie-player id="star3" src="https://assets6.lottiefiles.com/private_files/lf30_nj4asj5o.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star2" src="https://assets2.lottiefiles.com/private_files/lf30_ypj3nhxd.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star1" src="https://assets1.lottiefiles.com/private_files/lf30_d4ciqieu.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <div id="replayBtn"></div>
+      <div id="exitBtn"></div>
+
+    </div>
+
+  </div>
+
+  <audio id="bgm" src="media/audio/bgm.mp3" type="audio/mpeg"></audio>
+  <audio id="endscreenaudio" src="media/audio/correct_celebration.mp3" type="audio/mpeg"></audio>
+  <audio id="correctaudio" src="media/audio/correct_input.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction1" src="media/audio/1.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction2" src="media/audio/2.mp3" type="audio/mpeg"></audio>
+  <audio id="LetBeginInteraction3" src="media/audio/3.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption" src="media/audio/tryagainoption.mp3" type="audio/mpeg"></audio>
+  <audio id="tryagainoption2" src="media/audio/tryagainoption2.mp3" type="audio/mpeg"></audio>
+
+  <audio id="proundmp3" src="media/audio/i_am_so_proud_of_you.mp3" type="audio/mpeg"></audio>
+
+
+  <audio src="media/audio/tap_on_the_good_habits.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/gil_sneezing.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girl_bathing.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girl_washing_hands.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/oy_cutting_nails.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/excellent_tapped_all_good_habits.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/uh_oh_tap_on_the_good_habits.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/teeth_clean_brushing_everyday.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/soap.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/shampoo.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/fantastic_we_dont_use_clean_teeth.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/tap_objects_not_use_clean_teeth.mp3" type="audio/mpeg"></audio>
+
+
+  <audio src="media/audio/tap_odd_objects.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/crayon.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/pencil.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/superbtappedcorrectly.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/tap_odd_objects.mp3" type="audio/mpeg"></audio>
+
+
+  <audio src="media/audio/boy_eating_icecream.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/boy_playing_with_toys.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/boy_reading.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/boycooking.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girlsleeping.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/skippinggirl.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/boyjumping.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girlhopping.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/gilonslide.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/swinginggirl.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girlwithfamily.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/girlswiming.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/germs_are_very_small_tiny_a1.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/they_present_our_hands_a2.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/germs_can_enter_body_a3.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/so_we_should_always_take_care_a4.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/a_clean_body{_healthy_a5.mp3" type="audio/mpeg"></audio>
+
+
+
+  <script type="text/javascript" src="media/jquery/jquery.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery.ui.touch-punch.js"></script>
+
+  <!-- Loader Libraries Starts -->
+  <script type="text/javascript" src="media/preloader/jquery.html5Loader.min.js"></script>
+  <script type="text/javascript" src="media/preloader/animation/jquery.big-counter.js"></script>
+  <script type="text/javascript" src="media/preloader/Main.class.js"></script>
+  <script type="text/javascript" src="media/preloader/configPreload.js"></script>
+  <!--Loader Libraries Ends -->
+
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+
+  <script type="text/javascript" src="media/data/data.js"></script>
+  <script type="text/javascript" src="media/custom.js"></script>
+</body>
+
+</html>

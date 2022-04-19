@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, width = device-width"
+    name="viewport" />
+
+  <title>Know My World</title>
+
+  <link rel="stylesheet" type="text/css" href="media/jquery/animate.min.css" />
+  <link rel="stylesheet" type="text/css" href="media/style.css" />
+
+  <script>
+    document.addEventListener(
+      "touchmove",
+      function (e) {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
+    var lastTouchEnd = 0;
+
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        var now = new Date().getTime();
+        if (now - lastTouchEnd <= 50) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      },
+      { passive: false }
+    );
+  </script>
+</head>
+
+<body>
+  <!--Preloader-->
+  <div class="row">
+    <div id="html5Loader" class="col-sm-12">
+      <div id="DvLoaderCont">
+        <div id="DvLoaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div id="load_images" style="width: 0px; height: 0px; opacity: 0">
+      <img src="media/assets/background_1.png">
+      <img src="media/assets/background_2.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_3.png">
+      <img src="media/assets/background_4.png">
+    </div>
+
+    <div id="game_container">
+      
+    </div>
+    
+    <lottie-player class="fish" src="media/assets/fish.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+      </lottie-player>
+
+    <lottie-player class="parrot_1" src="media/assets/parrot.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+      </lottie-player>
+
+      <lottie-player class="cat_2" src="media/assets/cat.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+      </lottie-player>
+
+    <lottie-player class="dog_3" src="media/assets/dog.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+
+    <lottie-player class="rabbit_4" src="media/assets/rabbit.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+
+    <lottie-player class="tortoise_5" src="media/assets/tortoise_cap.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+
+    <lottie-player class="dog_5" src="media/assets/dog_smile.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+    <lottie-player class="cat_5" src="media/assets/cat.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+    <lottie-player class="fish_5" src="media/assets/fish_yawan.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+    <lottie-player class="rabbit_5" src="media/assets/rabbit_back.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+    <lottie-player class="parrot_5" src="media/assets/parrot_down.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+    <lottie-player class="tortoise_6" src="media/assets/tortoise_shell.json" background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px; background-size: cover; border-radius: 60px; display: none;" loop autoplay>
+    </lottie-player>
+      
+
+    <div id="hiddenShapesBox"></div>
+    <div id="levelProgressBarbg">
+
+      <div id="maskdiv"></div>
+      <div id="mask1stdiv"></div>
+      <div id="levelProgressBarStat"></div>
+      <div id="levelProgressBar">
+        <div id="feego"></div>
+        <!-- <div id="prevNo"></div>
+        <div id="nextNo"></div> -->
+      </div>
+      
+    </div>
+    <div id="teenabuttonmdpi"></div>
+    <div id="teenabuttonmdpi_slide">
+      <div id="homeblack"></div>
+      <div id="castblack"></div>
+    </div>
+    <div id="teenamdpi"></div>
+
+    <div id="endScreen">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://assets6.lottiefiles.com/private_files/lf30_9swauupx.json" background="transparent"
+        speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay></lottie-player>
+
+
+      <lottie-player id="star3" src="https://assets6.lottiefiles.com/private_files/lf30_nj4asj5o.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star2" src="https://assets2.lottiefiles.com/private_files/lf30_ypj3nhxd.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+
+      <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+      <lottie-player id="star1" src="https://assets1.lottiefiles.com/private_files/lf30_d4ciqieu.json"
+        background="transparent" speed="1" style="position: absolute; width: 1920px; height: 1080px;" loop autoplay>
+      </lottie-player>
+
+      <div id="replayBtn"></div>
+      <div id="exitBtn"></div>
+
+    </div>
+
+  </div>
+
+  <audio id="bgm" src="media/audio/bgm.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/correct_celebration.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/correct_input.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/tap_the_fish.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/uh_oh_tap_the_fish.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/bravo_that_fish.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/tap_the_bird_that_flies.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/ohhh_tap_the_bird_that_flies.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/fantastic_a_parrot_flies.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/tap_the_animal_shaking_its_tail.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/uh_oh_tap_the_animal_shaking_its_tail.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/hurray_the_cat_is_shaking_its_tail.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/tap_the_animal_that_is_sad.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/oh_ho_tap_the_animal_that_is_sad.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/yeah_the_dog_is_sad.mp3" type="audio/mpeg"></audio>
+
+  <audio src="media/audio/tap_the_dancing_animal.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/ohhh_tap_the_dancing_animal.mp3" type="audio/mpeg"></audio>
+  <audio src="media/audio/superb_the_rabbit_is_dancing.mp3" type="audio/mpeg"></audio>
+
+  
+
+  <script type="text/javascript" src="media/jquery/jquery.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="media/jquery/jquery.ui.touch-punch.js"></script>
+
+  <!-- Loader Libraries Starts -->
+  <script type="text/javascript" src="media/preloader/jquery.html5Loader.min.js"></script>
+  <script type="text/javascript" src="media/preloader/animation/jquery.big-counter.js"></script>
+  <script type="text/javascript" src="media/preloader/Main.class.js"></script>
+  <script type="text/javascript" src="media/preloader/configPreload.js"></script>
+  <!--Loader Libraries Ends -->
+
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+
+  <script type="text/javascript" src="media/data/data.js"></script>
+  <script type="text/javascript" src="media/custom.js"></script>
+</body>
+
+</html>
